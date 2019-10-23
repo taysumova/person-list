@@ -27,12 +27,16 @@ router.delete('/:id', async (req, res) => {
 });
 
 async function loadPersons() {
-  const client = await mongodb.MongoClient.connect('mongodb+srv://admin:admin2019@cluster0-4ykz4.mongodb.net', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+  try {
+    const client = await mongodb.MongoClient.connect('mongodb+srv://admin:admin2019@cluster0-4ykz4.mongodb.net', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
 
-  return client.db('person-list').collection('persons');
+    return client.db('person-list').collection('persons');
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 module.exports = router;

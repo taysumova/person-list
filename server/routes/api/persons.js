@@ -27,7 +27,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 async function loadPersons() {
-  const client = await mongodb.MongoClient.connect('mongodb+srv://admin:admin2019@cluster0-4ykz4.mongodb.net/test?retryWrites=true', {
+  const client = await mongodb.MongoClient.connect('mongodb+srv://admin:admin2019@cluster0-4ykz4.mongodb.net', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });

@@ -4,7 +4,6 @@
   "description": "An app to list your clients/pupils/customers and so on, to make groups from them and manage communications",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && npm run build",
     "start": "node server/index.js",
     "dev": "nodemon server/index.js"
   },

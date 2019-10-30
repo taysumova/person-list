@@ -17,7 +17,7 @@ npm run start
 
 ### Compiles and minifies for production
 ```
-npm run build
+from client - npm run build
 ```
 
 ### Lints and fixes files

@@ -1,0 +1,32 @@
+// include font
+@font-face {
+  font-family: Abel, sans-serif;
+  src: url(/assets/fonts/Abel.woff2) format('woff2'),
+  url(/assets/fonts/Abel.woff) format('woff'),
+  url(/assets/fonts/Abel.ttf) format('truetype');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-break: keep-all;
+}
+
+html,
+body {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+}
+
+li {
+  list-style-type: none;
+}

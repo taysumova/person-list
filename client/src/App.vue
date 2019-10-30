@@ -9,12 +9,15 @@
 </template>
 
 <style lang="scss">
+@import "assets/base.scss";
+
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: Abel, sans-serif;
+  font-size: 14px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-width: 320px;
 }
 
 #nav {

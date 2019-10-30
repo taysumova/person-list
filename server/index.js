@@ -1,16 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+require('dotenv').config();
 
+const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const cors = require('cors');
+const port = process.env.PORT || 3000;
 
 //  Middleware
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
-const persons = require('./routes/api/persons');
+const personsRouter = require('./routes/persons');
+app.use('/persons', personsRouter);
 
-app.use('/api/persons', persons);
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.once('open', () => console.log('Connected to database'));
 
 // Handle production
 if(process.env.NODE_ENV === "production") {
@@ -21,6 +31,4 @@ if(process.env.NODE_ENV === "production") {
   app.get(/.*/, (req, res) => res.sendFile(__dirname + "public/index.html"));
 }
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(port, () => console.log(`Server started on port ${port}`));

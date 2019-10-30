@@ -18,6 +18,7 @@
   height: 100%;
   width: 100%;
   min-width: 320px;
+  text-align: center;
 }
 
 #nav {

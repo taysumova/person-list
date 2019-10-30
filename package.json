@@ -25,13 +25,13 @@
   },
   "homepage": "https://github.com/taysumova/person-list#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^3.3.3",
     "mongoose": "^5.7.6"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "nodemon": "^1.19.4"
   }
 }

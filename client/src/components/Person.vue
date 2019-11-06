@@ -30,7 +30,7 @@ export default {
   methods: {
     async getPersons() {
       try {
-        this.persons = await PersonService.getPersons();
+        this.persons = (await PersonService.getPersons()).data;
       } catch (err) {
         this.error = err.message;
       }

@@ -42,10 +42,10 @@ export default {
       valid: false,
       nameRules: [v => !!v || this.$t("rules.required")],
       passwordRules: [
-        v => !!v || this.$t("rules.required"),
-        v =>
-          /(?=.{8,})(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*/.test(v) ||
-          this.$t("rules.password")
+        v => !!v || this.$t("rules.required")
+        // v =>
+        //   /(?=.{8,})(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*/.test(v) ||
+        //   this.$t("rules.password")
       ]
     };
   },
@@ -58,15 +58,15 @@ export default {
             email: this.username,
             password: this.password
           });
-          if (res.data) {
-            const { token } = res.data.success;
+          if (res) {
+            const { token } = res.data.user;
             await this.$store.dispatch("setToken", token);
           } else {
             this.error = "Error occurred during Login";
           }
         }
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     }
   }

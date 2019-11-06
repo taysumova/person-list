@@ -3,12 +3,12 @@ import ApiAuth from "@/services/ApiAuth";
 
 export default {
   register(credentials) {
-    return Api().post("register", credentials);
+    return Api().post("users/register", credentials);
   },
   login(credentials) {
-    return Api().post("login", credentials);
+    return Api().post("users/login", credentials);
   },
   logout() {
-    return ApiAuth().post("logout");
+    return ApiAuth().post("users/logout");
   }
 };

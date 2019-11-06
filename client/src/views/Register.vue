@@ -93,7 +93,7 @@ export default {
           await this.$router.push({ name: "login" });
         }
       } catch (e) {
-        console.log(e);
+        // console.log(e);
       }
     }
   }

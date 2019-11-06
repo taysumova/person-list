@@ -1,4 +1,4 @@
-import axios from "axios";
+import ApiAuth from "@/services/ApiAuth";
 
 const url = "persons/";
 
@@ -7,7 +7,7 @@ class PersonService {
   static getPersons() {
     return new Promise(async (resolve, reject) => {
       try {
-        const res = await axios.get(url);
+        const res = await ApiAuth.get(url);
         const data = res.data;
         resolve(
           data.map(post => ({
@@ -22,13 +22,13 @@ class PersonService {
   }
   // Add Person
   static addPerson(name) {
-    return axios.post(url, {
+    return ApiAuth.post(url, {
       name
     });
   }
   // Delete Person
   static deletePerson(id) {
-    return axios.delete(`${url}${id}`);
+    return ApiAuth.delete(`${url}${id}`);
   }
 }
 

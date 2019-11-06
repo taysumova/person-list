@@ -18,7 +18,6 @@ const PersonSchema = new mongoose.Schema({
   },
   listId:{
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: 'List'
   },
   createdAt: {

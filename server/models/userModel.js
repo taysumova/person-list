@@ -57,6 +57,12 @@ const UserSchema  = new mongoose.Schema({
   }
 });
 
+UserSchema.virtual('lists', {
+  ref: 'List',
+  localField: '_id',
+  foreignField: 'author'
+});
+
 UserSchema.statics.checkValidCredentials = async (email, password) => {
   const user = await User.findOne({ email });
   if(!user){
@@ -73,7 +79,7 @@ UserSchema.statics.checkValidCredentials = async (email, password) => {
 
 UserSchema.methods.newAuthToken = async function() {
   const user  = this;
-  const token =  jwt.sign({ _id: user.id.toString() },'mevnapp', {expiresIn: "7 days"});
+  const token =  jwt.sign({ _id: user.id.toString() }, process.env.JWT_SECRET, {expiresIn: "7 days"});
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token;

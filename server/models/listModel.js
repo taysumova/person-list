@@ -17,6 +17,12 @@ const ListSchema  = new mongoose.Schema({
   }
 });
 
+ListSchema.virtual('persons', {
+  ref: 'Person',
+  localField: '_id',
+  foreignField: 'listId'
+});
+
 const List = mongoose.model('List', ListSchema, 'lists');
 
 module.exports = List;

@@ -59,7 +59,7 @@ export default {
             password: this.password
           });
           if (res) {
-            const { token } = res.data.user;
+            const { token } = res.data;
             await this.$store.dispatch("setToken", token);
           } else {
             this.error = "Error occurred during Login";

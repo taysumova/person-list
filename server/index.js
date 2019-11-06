@@ -10,12 +10,16 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
-const personsRouter = require('./routes/persons');
+
+const personsRouter = require('./routes/personRoute');
 app.use('/persons', personsRouter);
+
+
 
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 const db = mongoose.connection;

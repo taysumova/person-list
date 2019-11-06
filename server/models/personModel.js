@@ -8,7 +8,6 @@ const PersonSchema = new mongoose.Schema({
   },
   description:{
     type: String,
-    required:true,
     trim: true
   },
   author:{

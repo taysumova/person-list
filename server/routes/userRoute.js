@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
   try {
     const user  = await User.checkValidCredentials(req.body.email, req.body.password);
     const token = await user.newAuthToken();
-    res.send({ user, token});
+    res.send({ user, token });
   } catch (error) {
     res.status(400).send();
   }

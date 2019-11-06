@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Person = require('../models/personModel');
 
-router.get('/', async (req, res) => {
+const authenticate  = require('../controllers/userController');
+
+router.get('/', authenticate, async (req, res) => {
   try {
     const persons = await Person.find();
     await res.status(200).json(persons);
@@ -11,13 +13,14 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:id', getPerson, (req, res) => {
+router.get('/:id', authenticate, getPerson, (req, res) => {
   res.json(res.person);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
   const person = new Person({
     name: req.body.name,
+    author: req.user._id,
   });
   try {
     const newPerson = await person.save();
@@ -27,20 +30,20 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.patch('/:id', getPerson, async (req, res) => {
+router.patch('/:id', authenticate, getPerson, async (req, res) => {
   if (req.body.name) {
     res.person.name = req.body.name
   }
 
   try {
     const updatedPerson = await res.person.save();
-    res.json(updatedPerson);
+    await res.json(updatedPerson);
   } catch(err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-router.delete('/:id', getPerson, async (req, res) => {
+router.delete('/:id', authenticate, getPerson, async (req, res) => {
   try {
     await res.person.remove();
     await res.json({ message: 'Deleted this person' });

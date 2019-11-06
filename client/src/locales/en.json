@@ -1,0 +1,33 @@
+{
+  "login": "Login",
+  "logout": "Logout",
+  "register": "register",
+  "search": "Search",
+  "profile": "Profile",
+  "construction": "Under construction",
+  "rights": "All rights reserved",
+  "gender": "gender",
+  "male": "male",
+  "female": "female",
+  "citizenship": "Citizenship(s)",
+  "age1": "years old",
+  "age2": "years old",
+  "age3": "years old",
+  "update": "Update",
+  "forms": {
+    "login": "Login",
+    "password": "Password",
+    "loginLabel": "E-mail",
+    "passwordLabel": "8 chars min, uppercase, lowercase and number",
+    "passwordLabel2": "Re-enter password",
+    "email": "E-mail address",
+    "submit": "Submit"
+  },
+  "rules": {
+    "password": "8 chars min, uppercase, lowercase and number",
+    "passwordMatch": "Passwords do not match",
+    "agreement": "You must agree to continue!",
+    "required": "This field is required",
+    "emailValid": "E-mail must be valid"
+  }
+}

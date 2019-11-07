@@ -15,9 +15,8 @@
   "age3": "years old",
   "update": "Update",
   "forms": {
-    "login": "Login",
+    "name": "Name",
     "password": "Password",
-    "loginLabel": "E-mail",
     "passwordLabel": "8 chars min, uppercase, lowercase and number",
     "passwordLabel2": "Re-enter password",
     "email": "E-mail address",

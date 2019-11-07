@@ -1,32 +1,29 @@
 <template>
-  <div class="login">
-    <v-form ref="form" v-model="valid" lazy-validation class="login__form">
-      <v-text-field
-        v-model="username"
-        :rules="nameRules"
-        :label="$t('forms.loginLabel')"
-        required
-      ></v-text-field>
+  <v-form ref="form" v-model="valid" lazy-validation class="form form--login">
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="Email"
+      required
+    ></v-text-field>
 
-      <v-text-field
-        primary
-        v-model="password"
-        type="password"
-        :rules="passwordRules"
-        :label="$t('forms.password')"
-        required
-      ></v-text-field>
+    <v-text-field
+      primary
+      v-model="password"
+      type="password"
+      :rules="passwordRules"
+      :label="$t('forms.password')"
+      required
+    ></v-text-field>
 
-      <p class="error-block">
-        {{ error }}
-      </p>
+    <p class="error-text">
+      {{ error }}
+    </p>
 
-      <button class="login__btn" @click.prevent="login">
-        {{ $t("forms.submit") }}
-      </button>
-      <slot> </slot>
-    </v-form>
-  </div>
+    <button class="form__btn" @click.prevent="login">
+      {{ $t("forms.submit") }}
+    </button>
+  </v-form>
 </template>
 
 <script>
@@ -36,11 +33,14 @@ export default {
   name: "login-form",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       error: "",
       valid: false,
-      nameRules: [v => !!v || this.$t("rules.required")],
+      emailRules: [
+        v => !!v || this.$t("rules.required"),
+        v => /.+@.+/.test(v) || this.$t("rules.emailValid")
+      ],
       passwordRules: [
         v => !!v || this.$t("rules.required")
         // v =>
@@ -66,7 +66,7 @@ export default {
           }
         }
       } catch (e) {
-        // console.log(e);
+        this.error = e.data || "Error during login";
       }
     }
   }
@@ -74,31 +74,7 @@ export default {
 </script>
 
 <style lang="scss">
-.login {
-  margin: 0 auto;
-  &__form {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 5px 5px 24px rgba(80, 80, 80, 1);
-    padding: 20px;
-    width: 320px;
-    text-align: center;
-  }
-  &__btn {
-    background-color: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(50, 170, 235, 1);
-    border-radius: 24px;
-    color: rgba(50, 170, 235, 1);
-    padding: 10px 20px;
-    text-transform: uppercase;
-    margin-top: 20px;
-    min-width: 100px;
-    cursor: pointer;
-    outline: none;
-    &:hover,
-    &:active {
-      background: rgba(50, 170, 235, 1);
-      color: #fff;
-    }
-  }
+.form--login {
+  margin: 1rem auto;
 }
 </style>

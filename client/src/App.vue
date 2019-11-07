@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <h1>New deploy</h1>
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
       <router-link to="/register">Register</router-link> |
       <router-link to="/login">Login</router-link>
     </div>
@@ -15,6 +13,7 @@
 @import "assets/base.scss";
 
 #app {
+  background-color: $bg-color;
   font-family: Abel, sans-serif;
   font-size: 14px;
   position: relative;
@@ -22,6 +21,9 @@
   width: 100%;
   min-width: 320px;
   text-align: center;
+  h1 {
+    color: $accent;
+  }
 }
 
 #nav {
@@ -29,10 +31,10 @@
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: $add-color;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $accent;
     }
   }
 }

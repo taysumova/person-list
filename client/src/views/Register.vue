@@ -1,54 +1,49 @@
 <template>
-  <div class="register">
-    <div class="register__text">
-      <h4 class="text__title">
-        {{ $t("registerPage.title") }}
-      </h4>
-      <p class="text__content">
-        {{ $t("registerPage.text") }}
-      </p>
-    </div>
-    <v-form ref="form" v-model="valid" lazy-validation class="register__form">
-      <v-text-field
-        v-model="username"
-        :rules="nameRules"
-        :label="$t('forms.login')"
-        required
-      ></v-text-field>
+  <v-form
+    ref="form"
+    v-model="valid"
+    lazy-validation
+    class="form form--register"
+  >
+    <v-text-field
+      v-model="username"
+      :rules="nameRules"
+      :label="$t('forms.name')"
+      required
+    ></v-text-field>
 
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        :label="$t('forms.email')"
-        required
-      ></v-text-field>
+    <v-text-field
+      v-model="email"
+      :rules="emailRules"
+      label="Email"
+      required
+    ></v-text-field>
 
-      <v-text-field
-        type="password"
-        v-model="password"
-        :rules="passwordRules"
-        persistent-hint
-        :label="$t('forms.password')"
-        required
-      ></v-text-field>
+    <v-text-field
+      type="password"
+      v-model="password"
+      :rules="passwordRules"
+      persistent-hint
+      :label="$t('forms.password')"
+      required
+    ></v-text-field>
 
-      <v-text-field
-        type="password"
-        v-model="confirmPassword"
-        :rules="confirmPasswordRules"
-        :label="$t('forms.passwordLabel2')"
-        required
-      ></v-text-field>
+    <v-text-field
+      type="password"
+      v-model="confirmPassword"
+      :rules="confirmPasswordRules"
+      :label="$t('forms.passwordLabel2')"
+      required
+    ></v-text-field>
 
-      <p class="error-block">
-        {{ error }}
-      </p>
+    <p class="error-text">
+      {{ error }}
+    </p>
 
-      <button class="register__btn" @click.prevent="register">
-        {{ $t("forms.submit") }}
-      </button>
-    </v-form>
-  </div>
+    <button class="form__btn" @click.prevent="register">
+      {{ $t("forms.submit") }}
+    </button>
+  </v-form>
 </template>
 
 <script>
@@ -93,7 +88,7 @@ export default {
           await this.$router.push({ name: "login" });
         }
       } catch (e) {
-        // console.log(e);
+        this.error = e.data || "Error during login";
       }
     }
   }
@@ -101,67 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-.register {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 5%;
-  max-width: 1200px;
-  &__text {
-    color: #fff;
-  }
-  .text {
-    &__title {
-      font-weight: 700;
-      font-size: 48px;
-      text-transform: uppercase;
-      line-height: 60px;
-      letter-spacing: 0.1em;
-      max-width: 650px;
-      margin-bottom: 54px;
-      position: relative;
-      &:after {
-        background: #fff;
-        content: "";
-        position: absolute;
-        bottom: -27px;
-        left: 0;
-        width: 39px;
-        height: 4px;
-      }
-    }
-    &__content {
-      font-size: 12px;
-      line-height: 22px;
-      letter-spacing: 0.1em;
-      max-width: 476px;
-      margin-bottom: 54px;
-    }
-  }
-  &__form {
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 5px 5px 24px rgba(80, 80, 80, 1);
-    text-align: center;
-    padding: 20px;
-    width: 320px;
-  }
-  &__btn {
-    background-color: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(50, 170, 235, 1);
-    border-radius: 24px;
-    color: rgba(50, 170, 235, 1);
-    padding: 10px 20px;
-    text-transform: uppercase;
-    min-width: 100px;
-    cursor: pointer;
-    outline: none;
-    &:hover,
-    &:active {
-      background: rgba(50, 170, 235, 1);
-      color: #fff;
-    }
-  }
+.form--register {
+  margin: 1rem auto;
 }
 </style>

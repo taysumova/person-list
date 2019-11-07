@@ -10,7 +10,7 @@
 $base-color: #fff;
 $add-color: #dfcdc3;
 $bg-color: #2c3e50;
-$accent: #42b983;
+$accent: #009688; // #42b983
 $error: rgb(255, 82, 82);
 
 
@@ -101,7 +101,6 @@ li {
   box-shadow: 1px 1px 10px $base-color;
   padding: 20px;
   width: 320px;
-  text-align: center;
   .error-text {
     min-height: 40px;
   }
@@ -109,11 +108,13 @@ li {
     background-color: $base-color;
     border: 2px solid $accent;
     border-radius: 24px;
+    display: block;
     color: $accent;
     padding: 10px 20px;
     text-transform: uppercase;
     min-width: 100px;
     cursor: pointer;
+    margin: 0 auto;
     &:hover,
     &:active {
       background: $accent;
@@ -122,3 +123,108 @@ li {
   }
 }
 
+.card {
+}
+
+.mobile__navbar {
+  background: #000;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+}
+
+.mobile__sidebar {
+}
+
+.confirm-modal {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  &__inner {
+    background: #fff;
+    padding: 1rem;
+    text-align: center;
+  }
+  &__text {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  &__btn {
+    border-radius: 8px;
+    color: #fff;
+    display: inline-block;
+    padding: 0.5rem;
+    max-width: 80px;
+    width: 100%;
+    margin: 0 0.5rem;
+    &--yes {
+      background: rgb(255, 82, 82);
+    }
+    &--no {
+      background: #778899;
+    }
+    &--confirm {
+      background: #32AAEB;
+    }
+    &:hover,
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
+// animations
+.fadeInLeft {
+  position: relative;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    margin-left: -100%;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+.fadeInRight {
+  position: relative;
+  animation-name: fadeInRight;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeInRight {
+  0% {
+    margin-right: -100%;
+    opacity: 0;
+  }
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
+}

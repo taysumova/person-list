@@ -20,7 +20,6 @@
   height: 100%;
   width: 100%;
   min-width: 320px;
-  text-align: center;
   h1 {
     color: $accent;
   }

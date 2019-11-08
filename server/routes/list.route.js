@@ -1,10 +1,10 @@
 const express = require('express');
 const router =  new express.Router();
-const List = require('../models/listModel');
-const Person = require('../models/personModel');
+const List = require('../models/list.model');
+const Person = require('../models/person.model');
 const { ObjectID } = require('mongodb');
 
-const authenticate  = require('../controllers/userController');
+const authenticate  = require('../middleware/auth');
 
 router.post('/', authenticate, async (req, res) => {
   const list = new List({

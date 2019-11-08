@@ -4,21 +4,24 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const { handleError, ErrorHandler } = require('./helpers/error');
 const port = process.env.PORT || 3000;
 
 //  Middleware
 app.use(express.json());
 app.use(cors());
-
+app.use((err, req, res, next) => {
+  handleError(err, res);
+});
 
 // Routes
-const usersRouter = require('./routes/userRoute');
+const usersRouter = require('./routes/user.route');
 app.use('/users', usersRouter);
 
-const personsRouter = require('./routes/personRoute');
+const personsRouter = require('./routes/person.route');
 app.use('/persons', personsRouter);
 
-const listsRouter = require('./routes/listRoute');
+const listsRouter = require('./routes/list.route');
 app.use('/lists', listsRouter);
 
 

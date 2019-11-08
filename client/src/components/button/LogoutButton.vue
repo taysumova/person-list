@@ -14,7 +14,7 @@ export default {
         await AuthenticationService.logout();
         await this.$store.dispatch("logout");
         await this.$router.push({
-          path: "/"
+          name: "login"
         });
       } catch (e) {
         // console.log(e);

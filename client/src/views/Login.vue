@@ -55,7 +55,7 @@ export default {
         this.error = "";
         if (this.$refs.form.validate()) {
           const res = await AuthenticationService.login({
-            email: this.username,
+            email: this.email,
             password: this.password
           });
           const { token } = res.data;

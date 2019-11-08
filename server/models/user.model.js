@@ -65,16 +65,20 @@ UserSchema.virtual('lists', {
 
 UserSchema.statics.checkValidCredentials = async (email, password) => {
   const user = await User.findOne({ email });
-  if(!user){
-    throw new Error('Unable to login')
-  }
+  try {
+    if(!user){
+      throw new Error('Email is not found');
+    }
 
-  const isMatch = await bcrypt.compare(password,user.password);
-  if(!isMatch){
-    throw new Error('Unable to login');
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch);
+    if(!isMatch){
+      throw new Error('Wrong password');
+    }
+    return user;
+  } catch (error) {
+    return error;
   }
-
-  return user;
 };
 
 UserSchema.methods.newAuthToken = async function() {

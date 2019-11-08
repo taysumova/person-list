@@ -1,9 +1,9 @@
 const express = require('express');
 const router =  new express.Router();
-const User = require('../models/userModel');
+const User = require('../models/user.model');
 const { ObjectID } = require('mongodb');
 
-const authenticate  = require('../controllers/userController');
+const authenticate  = require('../middleware/auth');
 
 
 // remove to file auth
@@ -18,7 +18,7 @@ router.post('/register', async (req,res) => {
 });
 
 // remove to file auth
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
   try {
     const user  = await User.checkValidCredentials(req.body.email, req.body.password);
     const token = await user.newAuthToken();

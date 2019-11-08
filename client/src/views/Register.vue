@@ -81,14 +81,14 @@ export default {
         this.error = "";
         if (this.$refs.form.validate()) {
           await AuthenticationService.register({
+            name: this.username,
             email: this.email,
-            password: this.password,
-            login: this.username
+            password: this.password
           });
           await this.$router.push({ name: "login" });
         }
       } catch (e) {
-        this.error = e.data || "Error during login";
+        this.error = e.data || "Error during register";
       }
     }
   }

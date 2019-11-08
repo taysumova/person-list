@@ -31,14 +31,12 @@
         </li>
       </ul>
     </div>
-    <language-change />
     <header-profile class="app-header__profile" />
   </base-header>
 </template>
 
 <script>
 import BaseHeader from "./BaseHeader.vue";
-import LanguageChange from "./Language.vue";
 import HeaderProfile from "./AppHeader/Profile.vue";
 import AppMobileNav from "./AppHeader/AppMobileNav.vue";
 
@@ -58,7 +56,6 @@ export default {
   components: {
     AppMobileNav,
     BaseHeader,
-    LanguageChange,
     HeaderProfile
   },
   computed: {
@@ -70,9 +67,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/base.scss";
 .app-header {
-  box-shadow: 0 6px 6px -6px #44b4e4;
-  background: #44b4e4;
+  box-shadow: 0 6px 6px -6px $bg-color;
+  background: $bg-color;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -2,17 +2,20 @@
   <header class="base-header">
     <slot name="mobile-menu"></slot>
     <router-link to="/">
-      <img src="@/assets/logo.svg" alt="logo" class="logo" />
+      <img src="@/assets/logo.svg" alt="logo" class="logo" height="90" />
     </router-link>
     <div class="base-header__content">
       <slot></slot>
     </div>
+    <language-change />
   </header>
 </template>
 
 <script>
+import LanguageChange from "./Language";
 export default {
-  name: "base-header"
+  name: "base-header",
+  components: { LanguageChange }
 };
 </script>
 
@@ -23,7 +26,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 0 40px;
+  padding-right: 40px;
   position: fixed;
   top: 0;
   left: 0;

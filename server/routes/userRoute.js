@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
     const token = await user.newAuthToken();
     res.send({ user, token });
   } catch (error) {
-    res.status(400).send();
+    res.status(400).send(error);
   }
 });
 
@@ -37,7 +37,7 @@ router.post('/logout', authenticate, async (req, res) => {
     await req.user.save();
     res.send();
   } catch (error) {
-    res.status(500).send();
+    res.status(500).send(error);
   }
 });
 

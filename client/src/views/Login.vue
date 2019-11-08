@@ -58,12 +58,8 @@ export default {
             email: this.username,
             password: this.password
           });
-          if (res) {
-            const { token } = res.data;
-            await this.$store.dispatch("setToken", token);
-          } else {
-            this.error = "Error occurred during Login";
-          }
+          const { token } = res.data;
+          await this.$store.dispatch("setToken", token);
         }
       } catch (e) {
         this.error = e.data || "Error during login";

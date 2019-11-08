@@ -38,7 +38,7 @@ export default {
 <style lang="scss">
 .guest__footer {
   color: #fff;
-  text-align: right;
+  text-align: center;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -49,7 +49,7 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       margin-bottom: 5px;
       a {
         width: 26px;

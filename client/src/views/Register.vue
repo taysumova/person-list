@@ -50,6 +50,7 @@
 import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
+  name: "register-form",
   data() {
     return {
       username: "",
@@ -80,12 +81,15 @@ export default {
       try {
         this.error = "";
         if (this.$refs.form.validate()) {
-          await AuthenticationService.register({
+          const res = await AuthenticationService.register({
             name: this.username,
             email: this.email,
             password: this.password
           });
-          await this.$router.push({ name: "login" });
+          const { token } = res.data;
+          await this.$store.dispatch("setToken", token);
+          await this.$router.push({ path: "/" });
+          this.$forceUpdate();
         }
       } catch (e) {
         this.error = e.data || "Error during register";

@@ -42,10 +42,10 @@ export default {
         v => /.+@.+/.test(v) || this.$t("rules.emailValid")
       ],
       passwordRules: [
-        v => !!v || this.$t("rules.required")
-        // v =>
-        //   /(?=.{8,})(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*/.test(v) ||
-        //   this.$t("rules.password")
+        v => !!v || this.$t("rules.required"),
+        v =>
+          /(?=.{8,})(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*/.test(v) ||
+          this.$t("rules.password")
       ]
     };
   },
@@ -60,6 +60,8 @@ export default {
           });
           const { token } = res.data;
           await this.$store.dispatch("setToken", token);
+          await this.$router.push({ path: "/" });
+          this.$forceUpdate();
         }
       } catch (e) {
         this.error = e.data || "Error during login";

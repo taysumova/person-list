@@ -10,8 +10,8 @@ const routes = [
     path: "/",
     name: "home",
     meta: {
-      layout: store.state.token ? "app" : "guest"
-      // requiresAuth: true
+      layout: "app",
+      requiresAuth: true
     },
     component: Home
   },

@@ -8,7 +8,21 @@ import { languages, defaultLocale } from "./locales/index";
 
 import vuetify from "./plugins/vuetify";
 
+// layouts
+import DefaultLayout from "./layouts/baseLayout.vue";
+import GuestLayout from "./layouts/guestLayout.vue";
+import AppLayout from "./layouts/appLayout.vue";
+
+// global components
+import SelectInput from "./components/select/SelectInput.vue";
+
 Vue.use(VueI18n);
+
+Vue.component("default-layout", DefaultLayout);
+Vue.component("guest-layout", GuestLayout);
+Vue.component("app-layout", AppLayout);
+
+Vue.component("select-input", SelectInput);
 
 Vue.config.productionTip = false;
 

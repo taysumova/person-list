@@ -5,9 +5,25 @@
       <router-link to="/register">Register</router-link> |
       <router-link to="/login">Login</router-link>
     </div>
-    <router-view />
+    <component :is="layout">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </component>
   </div>
 </template>
+
+<script>
+const defaultLayout = "default";
+
+export default {
+  computed: {
+    layout() {
+      return `${this.$route.meta.layout || defaultLayout}-layout`;
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 @import "assets/base.scss";
@@ -22,6 +38,9 @@
   min-width: 320px;
   h1 {
     color: $accent;
+  }
+  .profile__btn--logout {
+    background: url("./assets/icons/exit.svg") no-repeat right bottom;
   }
 }
 

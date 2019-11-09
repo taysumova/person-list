@@ -4,26 +4,28 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
-const { handleError, ErrorHandler } = require('./helpers/error');
+const jwt = require('./helpers/jwt');
+const errorHandler = require('./helpers/error-handler');
+
 const port = process.env.PORT || 3000;
 
 //  Middleware
 app.use(express.json());
 app.use(cors());
-app.use((err, req, res, next) => {
-  handleError(err, res);
-});
+// secure the api with JWT
+app.use(jwt());
+// global error handler
+app.use(errorHandler);
 
 // Routes
-const usersRouter = require('./routes/user.route');
+const usersRouter = require('./users/user.controller');
 app.use('/users', usersRouter);
 
-const personsRouter = require('./routes/person.route');
+const personsRouter = require('./persons/person.controller');
 app.use('/persons', personsRouter);
 
-const listsRouter = require('./routes/list.route');
+const listsRouter = require('./lists/list.controller');
 app.use('/lists', listsRouter);
-
 
 // MongoDB connection
 mongoose.connect(process.env.DATABASE_URL, {
@@ -35,7 +37,6 @@ mongoose.connect(process.env.DATABASE_URL, {
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to database'));
-
 
 // Handle production
 if(process.env.NODE_ENV === "production") {

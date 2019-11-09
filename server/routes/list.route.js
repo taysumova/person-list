@@ -6,7 +6,7 @@ const { ObjectID } = require('mongodb');
 
 const authenticate  = require('../middleware/auth');
 
-router.post('/', authenticate, async (req, res) => {
+router.post('/', async (req, res) => {
   const list = new List({
     ...req.body,
     author: req.user._id
@@ -20,7 +20,7 @@ router.post('/', authenticate, async (req, res) => {
 });
 
 //get all lists from other user too - delete later
-router.get('/',async (req,res) => {
+router.get('/', async (req,res) => {
   try {
     const posts = await List.find({});
     res.send(posts);

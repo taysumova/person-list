@@ -6,7 +6,7 @@ export default {
     return Api().post("users/register", credentials);
   },
   login(credentials) {
-    return Api().post("users/login", credentials);
+    return Api().post("users/authenticate", credentials);
   },
   logout() {
     return ApiAuth().post("users/logout");

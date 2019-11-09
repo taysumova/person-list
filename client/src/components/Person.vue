@@ -14,6 +14,7 @@
 
 <script>
 import PersonService from "@/services/PersonService";
+import UserService from "../services/UserService";
 
 export default {
   name: "Person",
@@ -31,6 +32,7 @@ export default {
     async getPersons() {
       try {
         this.persons = (await PersonService.getPersons()).data;
+        await UserService.getUsers();
       } catch (err) {
         this.error = err.message;
       }

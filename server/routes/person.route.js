@@ -4,7 +4,7 @@ const Person = require('../models/person.model');
 
 const authenticate  = require('../middleware/auth');
 
-router.get('/', authenticate, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const persons = await Person.find();
     await res.status(200).json(persons);

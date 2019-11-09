@@ -8,8 +8,8 @@ module.exports = {
   delete: _delete
 };
 
-async function getAll() {
-  return await PersonModel.find();
+async function getAll(userId) {
+  return await PersonModel.find().where({author: userId});
 }
 
 async function getById(id) {

@@ -21,10 +21,4 @@ const UserSchema = new Schema({
   }
 });
 
-UserSchema.virtual('lists', {
-  ref: 'List',
-  localField: '_id',
-  foreignField: 'author'
-});
-
 module.exports = mongoose.model('User', UserSchema, 'users');

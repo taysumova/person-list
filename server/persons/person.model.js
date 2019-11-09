@@ -13,20 +13,17 @@ const PersonSchema = new Schema({
   },
   author:{
     type: Schema.Types.ObjectId,
-    // required: true,
+    required: true,
     ref: 'User'
   },
-  listId:{
+  list:{
     type: Schema.Types.ObjectId,
     ref: 'List'
   },
   createdAt: {
     type: Date,
-    required: true,
     default: Date.now
   },
 });
 
-const Person = mongoose.model('Person', PersonSchema, 'persons');
-
-module.exports = Person;
+module.exports = mongoose.model('Person', PersonSchema, 'persons');

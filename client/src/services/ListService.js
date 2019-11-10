@@ -4,6 +4,9 @@ export default {
   getLists() {
     return ApiAuth().get("lists");
   },
+  getList(listId) {
+    return ApiAuth().get(`lists/${listId}`);
+  },
   addList(name) {
     return ApiAuth().post("lists", {
       name

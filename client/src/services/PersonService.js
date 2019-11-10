@@ -4,6 +4,9 @@ export default {
   getPersons() {
     return ApiAuth().get("persons");
   },
+  getPerson(personId) {
+    return ApiAuth().get(`persons/${personId}`);
+  },
   addPerson(name) {
     return ApiAuth().post("persons", {
       name

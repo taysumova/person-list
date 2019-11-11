@@ -8,7 +8,7 @@ function jwt() {
       '/users/authenticate',
       '/users/register',
       '/favicon.ico',
-      '/person-lists.herokuapp.com/'
+      '/'
     ]
   });
 }

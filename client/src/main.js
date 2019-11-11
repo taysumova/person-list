@@ -14,7 +14,8 @@ import GuestLayout from "./layouts/guestLayout.vue";
 import AppLayout from "./layouts/appLayout.vue";
 
 // global components
-import SelectInput from "./components/select/SelectInput.vue";
+import Table from "./components/general/Table.vue";
+import SelectInput from "./components/general/SelectInput.vue";
 
 Vue.use(VueI18n);
 
@@ -22,6 +23,7 @@ Vue.component("default-layout", DefaultLayout);
 Vue.component("guest-layout", GuestLayout);
 Vue.component("app-layout", AppLayout);
 
+Vue.component("app-table", Table);
 Vue.component("select-input", SelectInput);
 
 Vue.config.productionTip = false;

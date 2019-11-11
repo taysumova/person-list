@@ -1,14 +1,21 @@
 <template>
-  <div class="person card">
-    <v-text-field v-model="name" label="Person name" required></v-text-field>
-    <button class="form__btn" @click="addPerson">Add person</button>
-    <p v-for="(person, index) in persons" :key="index">
-      {{ person.name }}
-      <button @click="deletePerson(person._id)">
-        Delete
-      </button>
-    </p>
-  </div>
+  <app-table
+    title="Persons list"
+    :content="persons"
+    content-path="name"
+    @add-item="addPerson"
+    @open-item="openPerson"
+  />
+  <!--  <div class="person card">-->
+  <!--    <v-text-field v-model="name" label="Person name" required></v-text-field>-->
+  <!--    <button class="form__btn" @click="addPerson">Add person</button>-->
+  <!--    <p v-for="(person, index) in persons" :key="index">-->
+  <!--      {{ person.name }}-->
+  <!--      <button @click="deletePerson(person._id)">-->
+  <!--        Delete-->
+  <!--      </button>-->
+  <!--    </p>-->
+  <!--  </div>-->
 </template>
 
 <script>
@@ -34,22 +41,34 @@ export default {
         this.error = err.message;
       }
     },
+    // async addPerson() {
+    //   try {
+    //     await PersonService.addPerson(this.name);
+    //     await this.getPersons();
+    //   } catch (err) {
+    //     this.error = err.message;
+    //   }
+    // },
+    // async deletePerson(id) {
+    //   try {
+    //     await PersonService.deletePerson(id);
+    //     await this.getPersons();
+    //   } catch (err) {
+    //     this.error = err.message;
+    //   }
+    // },
     async addPerson() {
-      try {
-        await PersonService.addPerson(this.name);
-        await this.getPersons();
-      } catch (err) {
-        this.error = err.message;
-      }
+      // try {
+      //   await ListService.addList(this.title);
+      //   await this.getLists();
+      // } catch (err) {
+      //   this.error = err.message;
+      // }
+      console.log("addPerson");
     },
-    async deletePerson(id) {
-      try {
-        await PersonService.deletePerson(id);
-        await this.getPersons();
-      } catch (err) {
-        this.error = err.message;
-      }
-    }
+    openPerson(id) {
+      console.log(id);
+    },
   }
 };
 </script>

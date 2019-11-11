@@ -1,0 +1,61 @@
+<template>
+  <div class="table">
+    <h4 class="table__header">
+      {{ title }}
+      <button class="table__add-btn" @click="$emit('add-item')">Button</button>
+    </h4>
+    <ul class="table__content content">
+      <li
+        v-for="(item, index) in content"
+        :key="index"
+        class="content__item"
+        @click="$emit('open-item', item._id)"
+      >
+        {{ item[contentPath] }}
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "app-table",
+  props: ["title", "content", "contentPath", "status"]
+};
+</script>
+
+<style lang="scss">
+@import "../../assets/base";
+
+.table {
+  max-width: 400px;
+  max-height: 700px;
+  overflow-y: auto;
+  width: 100%;
+  margin: 1rem;
+  &__header {
+    background: $dark-accent;
+    color: $base-color;
+    font-size: 1.4rem;
+    font-weight: normal;
+    padding: 0.8rem 1rem;
+  }
+  &__content {
+    background: $base-color;
+    color: $dark-accent;
+    font-size: 1rem;
+    padding: 0.5rem 1rem 2rem;
+  }
+  .content {
+    &__item {
+      border-bottom: 1px solid #000;
+      line-height: 3rem;
+      &:hover,
+      &:active {
+        cursor: pointer;
+        opacity: 0.7;
+      }
+    }
+  }
+}
+</style>

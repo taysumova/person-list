@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <List />
     <Person />
+    <List />
   </div>
 </template>
 
@@ -26,6 +26,8 @@ export default {
 <style lang="scss">
 .home {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 5%;
+  justify-content: space-evenly;
 }
 </style>

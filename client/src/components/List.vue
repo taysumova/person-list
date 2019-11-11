@@ -1,14 +1,11 @@
 <template>
-  <div class="list card">
-    <v-text-field v-model="title" label="List title" required></v-text-field>
-    <button class="form__btn" @click="addList">Add list</button>
-    <p v-for="(list, index) in lists" :key="index">
-      {{ list.title }}
-      <button @click="deleteList(list._id)">
-        Delete
-      </button>
-    </p>
-  </div>
+  <app-table
+    title="List from compo"
+    :content="lists"
+    content-path="title"
+    @add-item="addList"
+    @open-item="openList"
+  />
 </template>
 
 <script>
@@ -35,12 +32,16 @@ export default {
       }
     },
     async addList() {
-      try {
-        await ListService.addList(this.title);
-        await this.getLists();
-      } catch (err) {
-        this.error = err.message;
-      }
+      // try {
+      //   await ListService.addList(this.title);
+      //   await this.getLists();
+      // } catch (err) {
+      //   this.error = err.message;
+      // }
+      console.log("addList");
+    },
+    openList(id) {
+      console.log(id);
     },
     async deleteList(id) {
       try {
@@ -53,20 +54,3 @@ export default {
   }
 };
 </script>
-
-<style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

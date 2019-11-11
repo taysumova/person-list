@@ -1,62 +1,40 @@
 <template>
-  <panel class="add-list" title="Add person">
-    <v-form
-      ref="form"
-      v-model="valid"
-      lazy-validation
-      class="form form--add-person"
-    >
-      <v-text-field
-        v-model="name"
-        :rules="nameRules"
-        :label="$t('forms.name')"
-        required
-      ></v-text-field>
-
-      <v-textarea v-model="comment" :label="$t('forms.comment')"></v-textarea>
-
-      <p class="error-text">
-        {{ error }}
-      </p>
-
-      <div class="form__btn-wrapper">
-        <button class="btn--cancel" @click.prevent="$router.go(-1)">
-          {{ $t("forms.cancel") }}
-        </button>
-        <button class="btn--submit" @click.prevent="addPerson">
-          {{ $t("forms.submit") }}
-        </button>
-      </div>
-    </v-form>
-  </panel>
+  <person-form
+    class="add-list"
+    title="Add person"
+    :person="person"
+    @person-action="addPerson"
+  >
+    <p class="error-text">
+      {{ error }}
+    </p>
+  </person-form>
 </template>
 
 <script>
 import PersonService from "../services/PersonService";
+import PersonForm from "../components/PersonForm";
 
 export default {
+  components: { PersonForm },
   data() {
     return {
-      name: "",
-      listId: "",
-      comment: "",
-      error: "",
-      valid: false,
-      nameRules: [v => !!v || this.$t("rules.required")]
+      person: {
+        name: "",
+        listId: "",
+        comment: ""
+      },
+      error: ""
     };
   },
   methods: {
-    async addPerson() {
+    async addPerson(personData) {
       try {
         this.error = "";
-        if (this.$refs.form.validate()) {
-          await PersonService.addPerson({
-            name: this.name,
-            listId: this.listId,
-            comment: this.comment
-          });
-          await this.$router.go(-1);
-        }
+        await PersonService.addPerson({
+          ...personData
+        });
+        await this.$router.go(-1);
       } catch (e) {
         this.error = e.data || "Error during adding person";
       }

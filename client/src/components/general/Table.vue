@@ -52,6 +52,11 @@ export default {
     width: 3.2rem;
     height: 3.2rem;
     z-index: 5;
+    &:hover,
+    &:active {
+      background-color: #f5f5f5;
+      transition: background-color 0.2s ease-in;
+    }
   }
   &__content {
     background: $base-color;

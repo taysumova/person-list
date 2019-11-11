@@ -20,19 +20,30 @@ export default {
 @import "../../assets/base";
 
 .panel {
-  margin: 1rem;
+  background: $base-color;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: 800px;
+  width: 100%;
   &__header {
-    background: $base-color;
     color: $dark-accent;
     font-size: 1.4rem;
     font-weight: normal;
+    text-transform: uppercase;
     padding: 0.8rem 1rem;
+    position: relative;
+    &:after {
+      background-color: $dark-accent;
+      content: "";
+      position: absolute;
+      left: 1rem;
+      bottom: 0;
+      width: 100px;
+      height: 3px;
+    }
   }
   &__content {
-    /* background: $base-color;
-    color: $dark-accent; */
     font-size: 1rem;
-    padding: 0.5rem 1rem 2rem;
   }
 }
 </style>

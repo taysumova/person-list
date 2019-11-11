@@ -8,7 +8,8 @@ import Vuetify, {
   VRadio,
   VSelect,
   VSnackbar,
-  VFileInput
+  VFileInput,
+  VTextarea
 } from "vuetify/lib";
 
 Vue.use(Vuetify, {
@@ -21,7 +22,8 @@ Vue.use(Vuetify, {
     VRadio,
     VSelect,
     VSnackbar,
-    VFileInput
+    VFileInput,
+    VTextarea
   }
 });
 

@@ -32,13 +32,7 @@ export default {
       }
     },
     async addList() {
-      // try {
-      //   await ListService.addList(this.title);
-      //   await this.getLists();
-      // } catch (err) {
-      //   this.error = err.message;
-      // }
-      console.log("addList");
+      await this.$router.push({ name: "create-list" });
     },
     openList(id) {
       console.log(id);

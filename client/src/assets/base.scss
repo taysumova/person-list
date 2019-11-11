@@ -101,16 +101,14 @@ li {
 
 .form {
   background-color: $base-color;
-  box-shadow: 1px 1px 10px $base-color;
   padding: 20px;
-  width: 320px;
   .error-text {
     min-height: 40px;
   }
   &__btn {
     background-color: $base-color;
     border: 2px solid $accent;
-    border-radius: 24px;
+    border-radius: 4px;
     display: block;
     color: $accent;
     padding: 10px 20px;
@@ -122,7 +120,50 @@ li {
     &:active {
       background: $accent;
       color: $base-color;
+      transition: background 0.1s ease-in;
     }
+  }
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      border-radius: 4px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      min-width: 100px;
+      cursor: pointer;
+      margin: 1rem;
+      &:hover,
+      &:active {
+        transition: background 0.1s ease-in;
+      }
+    }
+    .btn {
+      &--submit {
+        background-color: $base-color;
+        border: 2px solid $accent;
+        color: $accent;
+        &:hover,
+        &:active {
+          background: $accent;
+          color: $base-color;
+        }
+      }
+      &--cancel {
+        background-color: $base-color;
+        border: 2px solid $error;
+        color: $error;
+        &:hover,
+        &:active {
+          background: $error;
+          color: $base-color;
+        }
+      }
+    }
+  }
+  &__cancel {
+
   }
 }
 

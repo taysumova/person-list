@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Person from "@/components/Person.vue";
-import List from "../components/List";
+import Person from "@/components/PersonTable.vue";
+import List from "../components/ListTable";
 
 export default {
   name: "home",

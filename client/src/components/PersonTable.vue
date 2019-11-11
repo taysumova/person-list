@@ -41,34 +41,12 @@ export default {
         this.error = err.message;
       }
     },
-    // async addPerson() {
-    //   try {
-    //     await PersonService.addPerson(this.name);
-    //     await this.getPersons();
-    //   } catch (err) {
-    //     this.error = err.message;
-    //   }
-    // },
-    // async deletePerson(id) {
-    //   try {
-    //     await PersonService.deletePerson(id);
-    //     await this.getPersons();
-    //   } catch (err) {
-    //     this.error = err.message;
-    //   }
-    // },
     async addPerson() {
-      // try {
-      //   await ListService.addList(this.title);
-      //   await this.getLists();
-      // } catch (err) {
-      //   this.error = err.message;
-      // }
-      console.log("addPerson");
+      await this.$router.push({ name: "create-person" });
     },
     openPerson(id) {
       console.log(id);
-    },
+    }
   }
 };
 </script>

@@ -16,11 +16,15 @@
   "update": "Update",
   "forms": {
     "name": "Name",
+    "title": "Title",
+    "description": "Description",
+    "comment": "Comment",
     "password": "Password",
     "passwordLabel": "8 chars min, uppercase, lowercase and number",
     "passwordLabel2": "Re-enter password",
     "email": "E-mail address",
-    "submit": "Submit"
+    "submit": "Submit",
+    "cancel": "Cancel"
   },
   "rules": {
     "password": "8 chars min, uppercase, lowercase and number",

@@ -32,6 +32,22 @@ const routes = [
     component: () => import("../views/Register.vue")
   },
   {
+    path: "/list/create",
+    name: "create-list",
+    meta: {
+      layout: "app"
+    },
+    component: () => import("../views/AddList.vue")
+  },
+  {
+    path: "/person/create",
+    name: "create-person",
+    meta: {
+      layout: "app"
+    },
+    component: () => import("../views/AddPerson.vue")
+  },
+  {
     path: "/404",
     component: () => import("../views/404.vue")
   },

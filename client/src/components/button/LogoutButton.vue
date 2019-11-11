@@ -4,14 +4,12 @@
   </button>
 </template>
 <script>
-import AuthenticationService from "@/services/AuthenticationService";
 
 export default {
   name: "logout-button",
   methods: {
     async logout() {
       try {
-        await AuthenticationService.logout();
         await this.$store.dispatch("logout");
         await this.$router.push({
           name: "login"

@@ -1,10 +1,6 @@
 <template>
   <div class="person card">
-    <v-text-field
-    v-model="name"
-    label="Person name"
-    required
-    ></v-text-field>
+    <v-text-field v-model="name" label="Person name" required></v-text-field>
     <button class="form__btn" @click="addPerson">Add person</button>
     <p v-for="(person, index) in persons" :key="index">
       {{ person.name }}

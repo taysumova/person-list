@@ -1,6 +1,6 @@
 <template>
   <base-header class="base__header--guest">
-    <language-change/>
+    <language-change />
   </base-header>
 </template>
 

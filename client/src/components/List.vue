@@ -1,10 +1,6 @@
 <template>
   <div class="list card">
-    <v-text-field
-    v-model="title"
-    label="List title"
-    required
-    ></v-text-field>
+    <v-text-field v-model="title" label="List title" required></v-text-field>
     <button class="form__btn" @click="addList">Add list</button>
     <p v-for="(list, index) in lists" :key="index">
       {{ list.title }}

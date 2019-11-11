@@ -8,16 +8,17 @@ module.exports = {
   delete: _delete
 };
 
-async function getAll() {
-  return await ListModel.find();
+async function getAll(userId) {
+  return await ListModel.find().where({author: userId});
 }
 
 async function getById(id) {
   return await ListModel.findById(id);
 }
 
-async function create(params) {
-  const list = new List(params);
+async function create(userId, params) {
+  const list = new ListModel(params);
+  list.author = userId;
   await list.save();
 }
 

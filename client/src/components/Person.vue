@@ -1,8 +1,11 @@
 <template>
-  <div class="person">
-    <label for="name">Type name</label>
-    <input id="name" type="text" v-model="name" />
-    <button @click="addPerson">Add person</button>
+  <div class="person card">
+    <v-text-field
+    v-model="name"
+    label="Person name"
+    required
+    ></v-text-field>
+    <button class="form__btn" @click="addPerson">Add person</button>
     <p v-for="(person, index) in persons" :key="index">
       {{ person.name }}
       <button @click="deletePerson(person._id)">
@@ -14,7 +17,6 @@
 
 <script>
 import PersonService from "@/services/PersonService";
-import UserService from "../services/UserService";
 
 export default {
   name: "Person",
@@ -32,7 +34,6 @@ export default {
     async getPersons() {
       try {
         this.persons = (await PersonService.getPersons()).data;
-        await UserService.getUsers();
       } catch (err) {
         this.error = err.message;
       }
@@ -58,6 +59,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/base";
+.person {
+}
 h3 {
   margin: 40px 0 0;
 }

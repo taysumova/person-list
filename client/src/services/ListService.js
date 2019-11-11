@@ -7,9 +7,9 @@ export default {
   getList(listId) {
     return ApiAuth().get(`lists/${listId}`);
   },
-  addList(name) {
+  addList(title) {
     return ApiAuth().post("lists", {
-      name
+      title
     });
   },
   updateList(data) {

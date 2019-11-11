@@ -4,7 +4,6 @@
   </button>
 </template>
 <script>
-
 export default {
   name: "logout-button",
   methods: {

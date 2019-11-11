@@ -7,6 +7,8 @@ function jwt() {
       // public routes that don't require authentication
       '/users/authenticate',
       '/users/register',
+    // static files
+      '/',
       '/favicon.ico',
       '/css',
       '/js'

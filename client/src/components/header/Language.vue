@@ -48,15 +48,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/base";
+
 .language {
-  font-weight: 600;
-  font-size: 1rem;
   position: relative;
-  margin-left: 1rem;
+  margin: 0 0.3rem;
   &__header {
     color: #fff;
     cursor: pointer;
-    padding: 0.2rem 1.8rem 0.3rem 0.4rem;
+    padding-right: 1.5rem;
     position: relative;
     text-transform: uppercase;
     &:hover,
@@ -64,25 +64,26 @@ export default {
       opacity: 0.7;
     }
     &:after {
-      background: url("../../assets/icons/lang.svg");
+      background: url("../../assets/icons/lang.svg") no-repeat;
       content: "";
       position: absolute;
       top: 0;
       right: 0.1rem;
-      width: 24px;
-      height: 24px;
+      width: 18px;
+      height: 18px;
     }
   }
   &__content {
     background: #fff;
+    border-radius: 7px;
     box-shadow: 0 0 11px rgba(0, 0, 0, 0.192);
+    color: $accent;
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 1.5rem;
     right: 0;
     padding: 1rem;
-    width: 150px;
     z-index: 25;
   }
   &__item {
@@ -90,6 +91,7 @@ export default {
     padding: 0.2rem;
     &:hover,
     &:active {
+      opacity: 0.7;
       text-decoration: underline;
     }
   }

@@ -31,8 +31,5 @@ export default {
   height: 100%;
   width: 100%;
   min-width: 320px;
-  .profile__btn--logout {
-    background: url("./assets/icons/exit.svg") no-repeat right bottom;
-  }
 }
 </style>

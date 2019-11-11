@@ -1,13 +1,17 @@
 <template>
-  <base-header class="base__header--guest"></base-header>
+  <base-header class="base__header--guest">
+    <language-change/>
+  </base-header>
 </template>
 
 <script>
 import BaseHeader from "./BaseHeader.vue";
+import LanguageChange from "./Language";
 
 export default {
   name: "guest-header",
   components: {
+    LanguageChange,
     BaseHeader
   }
 };

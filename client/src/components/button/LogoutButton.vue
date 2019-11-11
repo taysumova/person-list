@@ -1,5 +1,5 @@
 <template>
-  <button class="profile__btn--logout" @click="logout">
+  <button class="btn--logout" @click="logout">
     {{ $t("logout") }}
   </button>
 </template>
@@ -25,14 +25,14 @@ export default {
 </script>
 
 <style lang="scss">
-.profile {
-  &__btn--logout {
-    border-top: 1px solid #a9a9a9;
-    padding-top: 1rem;
-    padding-right: 2rem;
-    line-height: 20px;
-    text-align: right;
-    outline: none;
+.btn--logout {
+  background: url("../../assets/icons/exit.svg") no-repeat right bottom;
+  padding: 0 1.5rem 0 0.5rem;
+  text-transform: uppercase;
+  outline: none;
+  &:hover,
+  &:active {
+    opacity: 0.7;
   }
 }
 </style>

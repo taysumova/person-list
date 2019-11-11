@@ -1,9 +1,9 @@
 <template>
   <list-form
-    class="add-list"
-    title="Add list"
+    class="edit-list"
+    title="Edit list"
     list="list"
-    @list-action="addList"
+    @list-action="editList"
   >
     <p class="error-text">
       {{ error }}
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import ListService from "@/services/ListService";
+// import ListService from "@/services/ListService";
 import ListForm from "../components/ListForm";
 
 export default {
@@ -27,13 +27,14 @@ export default {
     };
   },
   methods: {
-    async addList(listData) {
+    async editList(listData) {
       try {
         this.error = "";
-        await ListService.addList({
-          ...listData
-        });
-        await this.$router.push({ path: "/" });
+        console.log(listData);
+        // await ListService.addList({
+        //   ...listData
+        // });
+        // await this.$router.push({ path: "/" });
       } catch (e) {
         this.error = e.data || "Error during adding list";
       }
@@ -41,5 +42,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss"></style>

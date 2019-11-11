@@ -1,9 +1,9 @@
 <template>
   <person-form
-    class="add-person"
-    title="Add person"
+    class="edit-person"
+    title="Edit person"
     :person="person"
-    @person-action="addPerson"
+    @person-action="editPerson"
   >
     <p class="error-text">
       {{ error }}
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import PersonService from "../services/PersonService";
+// import PersonService from "../services/PersonService";
 import PersonForm from "../components/PersonForm";
 
 export default {
@@ -28,12 +28,13 @@ export default {
     };
   },
   methods: {
-    async addPerson(personData) {
+    async editPerson(personData) {
       try {
-        this.error = "";
-        await PersonService.addPerson({
-          ...personData
-        });
+        console.log(personData);
+        // this.error = "";
+        // await PersonService.addPerson({
+        //   ...personData
+        // });
         await this.$router.go(-1);
       } catch (e) {
         this.error = e.data || "Error during adding person";
@@ -42,5 +43,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss"></style>

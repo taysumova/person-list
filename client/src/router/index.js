@@ -40,12 +40,28 @@ const routes = [
     component: () => import("../views/AddList.vue")
   },
   {
+    path: "/list/:id/edit",
+    name: "edit-list",
+    meta: {
+      layout: "app"
+    },
+    component: () => import("../views/EditList.vue")
+  },
+  {
     path: "/person/create",
     name: "create-person",
     meta: {
       layout: "app"
     },
     component: () => import("../views/AddPerson.vue")
+  },
+  {
+    path: "/person/:id/edit",
+    name: "edit-person",
+    meta: {
+      layout: "app"
+    },
+    component: () => import("../views/EditPerson.vue")
   },
   {
     path: "/404",

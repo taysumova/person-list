@@ -35,7 +35,8 @@ export default {
       await this.$router.push({ name: "create-list" });
     },
     openList(id) {
-      console.log(id);
+      // TO DO - DELETE ID - AND MAKE JUST VIEW PAGE AND FROM THERE GO TO EDIT
+      this.$router.push({ path: `list/${id}/edit` });
     },
     async deleteList(id) {
       try {

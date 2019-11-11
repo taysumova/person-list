@@ -12,7 +12,7 @@
 </template>
 
 <script>
-// import PersonService from "../services/PersonService";
+import PersonService from "../services/PersonService";
 import PersonForm from "../components/PersonForm";
 
 export default {
@@ -27,15 +27,26 @@ export default {
       error: ""
     };
   },
+  created() {
+    this.getPerson();
+  },
   methods: {
+    async getPerson() {
+      try {
+        this.person = (await PersonService.getPerson(
+          this.$route.params.id
+        )).data;
+      } catch (e) {
+        this.error = e.data || "Error during getting person info";
+      }
+    },
     async editPerson(personData) {
       try {
-        console.log(personData);
-        // this.error = "";
-        // await PersonService.addPerson({
-        //   ...personData
-        // });
-        await this.$router.go(-1);
+        this.error = "";
+        await PersonService.updatePerson(this.$route.params.id, {
+          ...personData
+        });
+        await this.$router.push({ path: "/" });
       } catch (e) {
         this.error = e.data || "Error during adding person";
       }

@@ -1,19 +1,21 @@
 import ApiAuth from "@/services/ApiAuth";
 
+const path = "persons/";
+
 export default {
   getPersons() {
-    return ApiAuth().get("persons");
+    return ApiAuth().get(path);
   },
-  getPerson(personId) {
-    return ApiAuth().get(`persons/${personId}`);
+  getPerson(id) {
+    return ApiAuth().get(path + id);
   },
   addPerson(personParams) {
-    return ApiAuth().post("persons", personParams);
+    return ApiAuth().post(path, personParams);
   },
-  updatePerson(data) {
-    return ApiAuth().patch("persons", data);
+  updatePerson(id, data) {
+    return ApiAuth().patch(path + id, data);
   },
   deletePerson(id) {
-    return ApiAuth().delete(`persons/${id}`);
+    return ApiAuth().delete(path + id);
   }
 };

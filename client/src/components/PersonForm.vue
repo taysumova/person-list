@@ -55,8 +55,10 @@ export default {
       // Статус заявки
     };
   },
-  created() {
-    this.localPerson = { ...this.person };
+  watch: {
+    person(data) {
+      this.localPerson = { ...data };
+    }
   },
   methods: {
     submitPerson() {

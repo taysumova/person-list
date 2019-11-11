@@ -48,8 +48,10 @@ export default {
       titleRules: [v => !!v || this.$t("rules.required")]
     };
   },
-  created() {
-    this.localList = { ...this.list };
+  watch: {
+    list(data) {
+      this.localList = { ...data };
+    }
   },
   methods: {
     submitList() {

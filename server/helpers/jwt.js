@@ -10,8 +10,8 @@ function jwt() {
     // static files
       '/',
       '/favicon.ico',
-      '/css',
-      '/js'
+      '/\/css*/',
+      '/\/js*/'
     ]
   });
 }

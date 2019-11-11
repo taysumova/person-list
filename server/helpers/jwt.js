@@ -8,7 +8,8 @@ function jwt() {
       '/users/authenticate',
       '/users/register',
       '/favicon.ico',
-      '/'
+      '/css',
+      '/js'
     ]
   });
 }

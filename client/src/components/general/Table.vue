@@ -2,7 +2,7 @@
   <div class="table">
     <h4 class="table__header">
       {{ title }}
-      <button class="table__add-btn" @click="$emit('add-item')">Button</button>
+      <button class="table__add-btn" @click="$emit('add-item')"></button>
     </h4>
     <ul class="table__content content">
       <li
@@ -38,7 +38,20 @@ export default {
     color: $base-color;
     font-size: 1.4rem;
     font-weight: normal;
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 1rem;
+    position: relative;
+    margin-top: 0.5rem;
+  }
+  &__add-btn {
+    background: $base-color url("../../assets/icons/add.svg") no-repeat center;
+    box-shadow: $btn-box-shadow;
+    border-radius: 50%;
+    position: absolute;
+    right: 1rem;
+    top: -0.2rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    z-index: 5;
   }
   &__content {
     background: $base-color;

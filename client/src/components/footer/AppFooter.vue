@@ -12,14 +12,13 @@ export default {
 
 <style lang="scss">
 .app__footer {
-  background: #fff;
+  background: #000;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-end;
-  color: #000;
-  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  color: #fff;
   padding: 1rem;
   position: absolute;
   bottom: 0;

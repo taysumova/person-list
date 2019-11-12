@@ -40,6 +40,10 @@
       {{ error }}
     </p>
 
+    <router-link to="/login" class="form__additional-text">
+      Already have account? Login
+    </router-link>
+
     <button class="form__btn" @click.prevent="register">
       {{ $t("forms.submit") }}
     </button>
@@ -92,7 +96,8 @@ export default {
           this.$forceUpdate();
         }
       } catch (e) {
-        this.error = e.data || "Error during register";
+        const { message } = e.response.data;
+        this.error = message || "Error during register";
       }
     }
   }

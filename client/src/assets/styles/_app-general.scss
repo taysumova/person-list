@@ -83,6 +83,16 @@
       }
     }
   }
+  &__additional-text {
+    display: block;
+    margin: 0.5rem 0;
+    text-align: center;
+    color: $bg-color;
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
 }
 
 .card {

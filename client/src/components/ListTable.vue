@@ -1,6 +1,6 @@
 <template>
   <app-table
-    title="List from compo"
+    title="Lists"
     :content="lists"
     content-path="title"
     @add-item="addList"

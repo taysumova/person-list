@@ -1,6 +1,6 @@
 <template>
   <app-table
-    title="Persons list"
+    title="Persons"
     :content="persons"
     content-path="name"
     @add-item="addPerson"

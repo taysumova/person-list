@@ -27,8 +27,9 @@ export default {
   padding: 80px 16px 60px;
   position: relative;
   width: 100%;
-  min-height: 100%;
   min-width: 320px;
+  height: 100%;
+  min-height: 100vh;
   @media screen and (max-width: 415px) {
     padding-top: 60px;
   }

@@ -28,7 +28,7 @@ export default {
   font-family: Abel, sans-serif;
   font-size: 14px;
   position: relative;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   min-width: 320px;
 }

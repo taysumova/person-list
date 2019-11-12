@@ -37,7 +37,7 @@ const routes = [
     meta: {
       layout: "app"
     },
-    component: () => import("../views/AddList.vue")
+    component: () => import("../views/List/AddList.vue")
   },
   {
     path: "/list/:id/edit",
@@ -45,7 +45,7 @@ const routes = [
     meta: {
       layout: "app"
     },
-    component: () => import("../views/EditList.vue")
+    component: () => import("../views/List/EditList.vue")
   },
   {
     path: "/person/create",
@@ -53,7 +53,7 @@ const routes = [
     meta: {
       layout: "app"
     },
-    component: () => import("../views/AddPerson.vue")
+    component: () => import("../views/Person/AddPerson.vue")
   },
   {
     path: "/person/:id/edit",
@@ -61,7 +61,7 @@ const routes = [
     meta: {
       layout: "app"
     },
-    component: () => import("../views/EditPerson.vue")
+    component: () => import("../views/Person/EditPerson.vue")
   },
   {
     path: "/404",

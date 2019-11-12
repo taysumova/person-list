@@ -13,7 +13,7 @@
 
 <script>
 import ListService from "@/services/ListService";
-import ListForm from "../components/ListForm";
+import ListForm from "../../components/list/ListForm";
 
 export default {
   components: { ListForm },

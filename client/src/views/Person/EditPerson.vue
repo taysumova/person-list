@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import PersonService from "../services/PersonService";
-import PersonForm from "../components/PersonForm";
+import PersonService from "../../services/PersonService";
+import PersonForm from "../../components/person/PersonForm";
 
 export default {
   components: { PersonForm },

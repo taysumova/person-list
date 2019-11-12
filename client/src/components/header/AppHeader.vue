@@ -32,7 +32,8 @@ export default {
   flex-direction: row;
   align-items: center;
   height: 80px;
-  @media screen and (max-width: 415px) {
+  min-width: 320px;
+  @media screen and (max-width: 453px) {
     height: 60px;
     padding: 0 20px;
   }

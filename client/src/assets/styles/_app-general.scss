@@ -1,16 +1,6 @@
 @import "vars";
 
 // for app general classes
-.user__page {
-  padding: 25px 29px 70px 13px;
-  overflow-y: auto;
-  word-break: break-all;
-  width: calc(100% - 330px);
-  @media screen and (max-width: 1110px) {
-    width: 100%;
-  }
-}
-
 .error-text {
   font-weight: 600;
   color: $error;
@@ -46,6 +36,7 @@
   }
   &__btn-wrapper {
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: center;
     button {
@@ -54,7 +45,7 @@
       text-transform: uppercase;
       min-width: 100px;
       cursor: pointer;
-      margin: 1rem;
+      margin: 0.3rem 0.5rem;
       &:hover,
       &:active {
         transition: background 0.1s ease-in;

@@ -1,7 +1,18 @@
 <template>
   <header class="base-header">
     <router-link class="logo" to="/">
-      <img src="@/assets/logo.svg" alt="logo" class="logo__img" height="80" />
+      <img
+        src="@/assets/logo.svg"
+        alt="logo"
+        class="logo__img logo__img--large"
+        height="80"
+      />
+      <img
+        src="@/assets/logo-short.svg"
+        alt="logo"
+        class="logo__img logo__img--small"
+        height="80"
+      />
     </router-link>
     <div class="base-header__content">
       <slot></slot>
@@ -22,7 +33,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding-right: 40px;
+  padding-right: 20px;
   position: fixed;
   top: 0;
   left: 0;
@@ -39,11 +50,28 @@ export default {
     justify-content: center;
   }
   .logo {
-    height: 80px;
+    height: 100%;
     overflow: hidden;
+    :hover,
+    :active {
+      opacity: 0.7;
+    }
     &__img {
-      margin-left: -1.5rem;
-      margin-top: -5px;
+      &--large {
+        margin-left: -1.5rem;
+        margin-top: -5px;
+        @media screen and (max-width: 453px) {
+          display: none;
+        }
+      }
+      &--small {
+        margin-left: -1rem;
+        margin-top: -10px;
+        display: none;
+        @media screen and (max-width: 453px) {
+          display: block;
+        }
+      }
     }
   }
 }

@@ -32,5 +32,8 @@
     "agreement": "You must agree to continue!",
     "required": "This field is required",
     "emailValid": "E-mail must be valid"
+  },
+  "errors": {
+    "somethingWrong": "Something went wrong"
   }
 }

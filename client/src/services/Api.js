@@ -1,5 +1,9 @@
 import axios from "axios";
+import apiErrorHandler from "../helpers/apiErrorHandler";
 
 export default () => {
-  return axios.create({});
+  const Api = axios.create({});
+
+  Api.interceptors.response.use(response => response, apiErrorHandler);
+  return Api;
 };

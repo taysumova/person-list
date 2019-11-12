@@ -68,8 +68,7 @@ export default {
           this.$forceUpdate();
         }
       } catch (e) {
-        const { message } = e.response.data;
-        this.error = message || "Error during login";
+        this.error = e;
       }
     }
   }

@@ -62,6 +62,7 @@ export default {
       password: "",
       confirmPassword: "",
       error: "",
+      loading: false,
       valid: false,
       nameRules: [v => !!v || this.$t("rules.required")],
       emailRules: [
@@ -85,6 +86,7 @@ export default {
       try {
         this.error = "";
         if (this.$refs.form.validate()) {
+          this.loading = true;
           const res = await AuthenticationService.register({
             name: this.username,
             email: this.email,
@@ -93,11 +95,10 @@ export default {
           const { token } = res.data;
           await this.$store.dispatch("setToken", token);
           await this.$router.push({ path: "/" });
-          this.$forceUpdate();
         }
       } catch (e) {
-        const { message } = e.response.data;
-        this.error = message || "Error during register";
+        this.loading = false;
+        this.error = e;
       }
     }
   }

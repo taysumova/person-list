@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base";
+@import "../../assets/styles/vars";
 
 .language {
   position: relative;

@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base";
+@import "../../assets/styles/vars";
 
 .table {
   max-width: 400px;

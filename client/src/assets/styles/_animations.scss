@@ -1,0 +1,36 @@
+// animations
+.fadeInLeft {
+  position: relative;
+  animation-name: fadeInLeft;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    margin-left: -100%;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
+.fadeInRight {
+  position: relative;
+  animation-name: fadeInRight;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeInRight {
+  0% {
+    margin-right: -100%;
+    opacity: 0;
+  }
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
+}

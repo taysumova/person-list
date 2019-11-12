@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base.scss";
+@import "../../assets/styles/vars";
 .app-header {
   box-shadow: 0 6px 6px -6px $bg-color;
   background: $bg-color;

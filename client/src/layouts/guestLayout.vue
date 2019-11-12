@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/base.scss";
+@import "../assets/styles/vars";
 
 .guest {
   background-color: $bg-color;

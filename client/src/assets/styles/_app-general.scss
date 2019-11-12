@@ -1,85 +1,6 @@
-// include font
-@font-face {
-  font-family: Abel, sans-serif;
-  src: url(/assets/fonts/Abel.woff2) format('woff2'),
-  url(/assets/fonts/Abel.woff) format('woff'),
-  url(/assets/fonts/Abel.ttf) format('truetype');
-}
-
-// vars
-$base-color: #fff;
-$btn-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-$add-color: #dfcdc3;
-$bg-color: #2c3e50;
-$accent: #42b983; // #42b983 #009688
-$dark-accent: #009688;
-$error: rgb(255, 82, 82);
-
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  word-break: keep-all;
-}
-
-html,
-body {
-  overflow-x: auto !important;
-  overflow-y: auto !important;
-  width: 100%;
-  height: 100%;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  outline: none;
-}
-
-li {
-  list-style-type: none;
-}
-
-// for vuetify classes
-.v-input, .theme--light.v-label {
-  color: $accent;
-}
-
-.v-messages,
-.error--text {
-  color: $error !important;
-}
-
-.v-picker__title {
-  background: $bg-color;
-  color: $base-color;
-}
-
-.v-date-picker-table .v-btn.v-btn--active {
-  background-color: $bg-color !important;
-}
-
-.v-date-picker-header__value {
-  word-break: keep-all !important;
-}
-
-.error-block {
-  .v-snack__wrapper {
-    background: $error;
-  }
-}
-
-.success-block {
-  .v-snack__wrapper {
-    background: $accent;
-  }
-}
+@import "vars";
 
 // for app general classes
-
 .user__page {
   padding: 25px 29px 70px 13px;
   overflow-y: auto;
@@ -162,9 +83,6 @@ li {
       }
     }
   }
-  &__cancel {
-
-  }
 }
 
 .card {
@@ -209,63 +127,43 @@ li {
     font-weight: 600;
     margin-bottom: 1rem;
   }
-  &__btn {
-    border-radius: 8px;
-    color: #fff;
-    display: inline-block;
-    padding: 0.5rem;
-    max-width: 80px;
-    width: 100%;
-    margin: 0 0.5rem;
-    &--yes {
-      background: rgb(255, 82, 82);
+  &__btn-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      border-radius: 4px;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      min-width: 100px;
+      cursor: pointer;
+      margin: 1rem;
+      &:hover,
+      &:active {
+        transition: background 0.1s ease-in;
+      }
     }
-    &--no {
-      background: #778899;
+    .btn {
+      &--submit {
+        background-color: $base-color;
+        border: 2px solid $accent;
+        color: $accent;
+        &:hover,
+        &:active {
+          background: $accent;
+          color: $base-color;
+        }
+      }
+      &--cancel {
+        background-color: $base-color;
+        border: 2px solid $error;
+        color: $error;
+        &:hover,
+        &:active {
+          background: $error;
+          color: $base-color;
+        }
+      }
     }
-    &--confirm {
-      background: #32AAEB;
-    }
-    &:hover,
-    &:active {
-      opacity: 0.7;
-    }
-  }
-}
-
-// animations
-.fadeInLeft {
-  position: relative;
-  animation-name: fadeInLeft;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in;
-}
-
-@keyframes fadeInLeft {
-  0% {
-    margin-left: -100%;
-    opacity: 0;
-  }
-  100% {
-    margin-left: 0;
-    opacity: 1;
-  }
-}
-
-.fadeInRight {
-  position: relative;
-  animation-name: fadeInRight;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in;
-}
-
-@keyframes fadeInRight {
-  0% {
-    margin-right: -100%;
-    opacity: 0;
-  }
-  100% {
-    margin-right: 0;
-    opacity: 1;
   }
 }

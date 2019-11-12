@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base";
+@import "../../assets/styles/vars";
 
 .panel {
   background: $base-color;

@@ -1,0 +1,7 @@
+// include font
+@font-face {
+  font-family: Abel, sans-serif;
+  src: url(/assets/fonts/Abel.woff2) format('woff2'),
+  url(/assets/fonts/Abel.woff) format('woff'),
+  url(/assets/fonts/Abel.ttf) format('truetype');
+}

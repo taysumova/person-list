@@ -1,0 +1,32 @@
+@import "vars";
+@import "fonts";
+@import "animations";
+@import "vuetify-custom";
+@import "app-general";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-break: keep-all;
+}
+
+html,
+body {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+}
+
+li {
+  list-style-type: none;
+}

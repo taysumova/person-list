@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/base";
+@import "../assets/styles/vars";
 .person {
 }
 h3 {

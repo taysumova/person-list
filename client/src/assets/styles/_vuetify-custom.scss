@@ -1,0 +1,36 @@
+@import "_vars";
+
+// for vuetify classes
+.v-input, .theme--light.v-label {
+  color: $accent;
+}
+
+.v-messages,
+.error--text {
+  color: $error !important;
+}
+
+.v-picker__title {
+  background: $bg-color;
+  color: $base-color;
+}
+
+.v-date-picker-table .v-btn.v-btn--active {
+  background-color: $bg-color !important;
+}
+
+.v-date-picker-header__value {
+  word-break: keep-all !important;
+}
+
+.error-block {
+  .v-snack__wrapper {
+    background: $error;
+  }
+}
+
+.success-block {
+  .v-snack__wrapper {
+    background: $accent;
+  }
+}

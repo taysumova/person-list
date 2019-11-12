@@ -36,7 +36,9 @@
       required
     ></v-text-field>
 
-    <p class="error-text">
+    <preloader v-if="loading" :small="true" />
+
+    <p v-else class="error-text">
       {{ error }}
     </p>
 
@@ -44,7 +46,7 @@
       Already have account? Login
     </router-link>
 
-    <button class="form__btn" @click.prevent="register">
+    <button class="form__btn" :disabled="loading" @click.prevent="register">
       {{ $t("forms.submit") }}
     </button>
   </v-form>

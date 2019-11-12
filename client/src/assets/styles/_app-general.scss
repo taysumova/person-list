@@ -37,8 +37,8 @@
     min-width: 100px;
     cursor: pointer;
     margin: 0 auto;
-    &:hover,
-    &:active {
+    &:hover:enabled,
+    &:active:enabled {
       background: $accent;
       color: $base-color;
       transition: background 0.1s ease-in;
@@ -92,6 +92,9 @@
     &:active {
       text-decoration: underline;
     }
+  }
+  button:disabled {
+    opacity: 0.4;
   }
 }
 

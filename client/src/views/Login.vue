@@ -16,7 +16,9 @@
       required
     ></v-text-field>
 
-    <p class="error-text">
+    <preloader v-if="loading" :small="true" />
+
+    <p v-else class="error-text">
       {{ error }}
     </p>
 
@@ -24,7 +26,7 @@
       Do not have account yet? Register
     </router-link>
 
-    <button class="form__btn" @click.prevent="login">
+    <button class="form__btn" :disabled="loading" @click.prevent="login">
       {{ $t("forms.submit") }}
     </button>
   </v-form>
@@ -39,6 +41,7 @@ export default {
     return {
       email: "",
       password: "",
+      loading: false,
       error: "",
       valid: false,
       emailRules: [
@@ -57,6 +60,7 @@ export default {
     async login() {
       try {
         this.error = "";
+        this.loading = true;
         if (this.$refs.form.validate()) {
           const res = await AuthenticationService.login({
             email: this.email,
@@ -65,9 +69,9 @@ export default {
           const { token } = res.data;
           await this.$store.dispatch("setToken", token);
           await this.$router.push({ path: "/" });
-          this.$forceUpdate();
         }
       } catch (e) {
+        this.loading = false;
         this.error = e;
       }
     }

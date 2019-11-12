@@ -1,12 +1,16 @@
 <template>
   <div class="preloader">
-    <span class="preloader--inner"></span>
+    <span
+      class="preloader__inner"
+      :class="small ? 'preloader__inner--small' : 'preloader__inner--default'"
+    ></span>
   </div>
 </template>
 
 <script>
 export default {
-  name: "preloader"
+  name: "preloader",
+  props: ["small"]
 };
 </script>
 
@@ -17,16 +21,24 @@ export default {
   display: flex;
   width: 100%;
   overflow: hidden;
-  &--inner {
+  &__inner {
     border: 10px solid $bg-color;
     border-radius: 50%;
-    border-bottom: 10px solid $accent;
-    border-top: 10px solid $accent;
+    border-bottom-color: $accent;
+    border-top-color: $accent;
     display: block;
-    width: 60px;
-    height: 60px;
-    margin: 3rem auto;
     animation: spin 2s linear infinite;
+    &--default {
+      margin: 3rem auto;
+      width: 60px;
+      height: 60px;
+    }
+    &--small {
+      margin: 8px auto;
+      border-width: 5px;
+      width: 30px;
+      height: 30px;
+    }
   }
 }
 

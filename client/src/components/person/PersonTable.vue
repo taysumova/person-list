@@ -1,6 +1,6 @@
 <template>
   <app-table
-    title="Persons"
+    :title="$t('general.persons')"
     :content="persons"
     :status="status"
     content-path="name"

@@ -1,7 +1,7 @@
 <template>
   <list-form
     class="edit-list"
-    title="Edit list"
+    :title="$t('general.editList')"
     :list="list"
     @list-action="editList"
   >

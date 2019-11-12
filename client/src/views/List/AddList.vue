@@ -1,7 +1,7 @@
 <template>
   <list-form
     class="add-list"
-    title="Add list"
+    :title="$t('general.addList')"
     list="list"
     @list-action="addList"
   >

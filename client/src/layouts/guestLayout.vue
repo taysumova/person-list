@@ -35,26 +35,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 40px;
+  padding: 80px 0 60px;
   position: relative;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   min-width: 320px;
-  min-height: 100vh;
-  @media screen and (max-width: 456px) {
-    padding: 0 10px;
-  }
-  @media screen and (max-width: 321px) {
-    padding: 0;
-  }
-  @media screen and (max-height: 618px) {
-    padding: 60px 10px 0;
-  }
-  @media screen and (max-height: 933px) and (max-width: 456px) {
-    padding: 80px 10px;
-  }
-  @media screen and (max-height: 933px) and (max-width: 321px) {
-    padding: 80px 0;
-  }
 }
 </style>

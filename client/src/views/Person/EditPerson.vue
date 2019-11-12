@@ -1,7 +1,7 @@
 <template>
   <person-form
     class="edit-person"
-    title="Edit person"
+    :title="$t('general.editPerson')"
     :person="person"
     @person-action="editPerson"
   >

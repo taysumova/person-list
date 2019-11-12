@@ -34,6 +34,15 @@
     "emailValid": "E-mail must be valid"
   },
   "errors": {
+    "server": "",
     "somethingWrong": "Something went wrong"
+  },
+  "general": {
+    "lists": "Lists",
+    "persons": "Persons",
+    "addList": "Add list",
+    "editList": "Edit list",
+    "addPerson": "Add person",
+    "editPerson": "Edit person"
   }
 }

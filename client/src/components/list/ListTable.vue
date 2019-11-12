@@ -1,6 +1,6 @@
 <template>
   <app-table
-    title="Lists"
+    :title="$t('general.lists')"
     :content="lists"
     :status="status"
     content-path="title"

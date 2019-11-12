@@ -7,14 +7,41 @@
       class="form form--add-person"
     >
       <v-text-field
+        v-model="localPerson.surname"
+        :label="$t('forms.surname')"
+      ></v-text-field>
+
+      <v-text-field
         v-model="localPerson.name"
         :rules="nameRules"
         :label="$t('forms.name')"
         required
       ></v-text-field>
 
+      <v-text-field
+        v-model="localPerson.middleName"
+        :label="$t('forms.middleName')"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="localPerson.email"
+        :rules="emailRules"
+        label="Email"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="localPerson.phone"
+        maxlength="12"
+        :label="$t('forms.phone')"
+      ></v-text-field>
+
+      <v-text-field
+        v-model="localPerson.address"
+        :label="$t('forms.address')"
+      ></v-text-field>
+
       <v-textarea
-        v-model="localPerson.comment"
+        v-model="localPerson.comments"
         :label="$t('forms.comment')"
       ></v-textarea>
 
@@ -33,26 +60,26 @@
 </template>
 
 <script>
+import { personRules } from "../../helpers/rules";
+
 export default {
   name: "person-form",
   props: ["title", "person"],
   data() {
     return {
       localPerson: {
+        surname: "",
         name: "",
-        listId: "",
-        comment: ""
+        middleName: "",
+        email: "",
+        phone: "",
+        address: "",
+        comments: "",
+        listId: ""
       },
       valid: false,
-      nameRules: [v => !!v || this.$t("rules.required")]
-      // Фамилия*
-      // Имя*
-      // Отчество
-      // Email*
-      // Номер телефона*
-      // Адрес*
-      // Дополнительная информация
-      // Статус заявки
+      nameRules: [v => !!v || this.$t("rules.required")],
+      emailRules: personRules.email
     };
   },
   watch: {

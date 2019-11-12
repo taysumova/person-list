@@ -7,6 +7,9 @@ const ListSchema = new Schema({
     required: true,
     default: 'No title'
   },
+  description: {
+    type: String,
+  },
   author:{
     type: Schema.Types.ObjectId,
     required: true,

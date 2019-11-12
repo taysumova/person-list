@@ -16,6 +16,10 @@
   "update": "Обновить",
   "forms": {
     "name": "Имя",
+    "surname": "Фамилия",
+    "middleName": "Отчество",
+    "phone": "Номер телефона",
+    "address": "Адрес",
     "title": "Название",
     "description": "Описание",
     "comment": "Комментарий",

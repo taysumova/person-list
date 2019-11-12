@@ -16,6 +16,10 @@
   "update": "Update",
   "forms": {
     "name": "Name",
+    "surname": "Surname",
+    "middleName": "Middle Name",
+    "phone": "Phone",
+    "address": "Address",
     "title": "Title",
     "description": "Description",
     "comment": "Comment",

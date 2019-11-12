@@ -2,6 +2,7 @@
   <app-table
     title="Lists"
     :content="lists"
+    :status="status"
     content-path="title"
     @add-item="addList"
     @open-item="openList"
@@ -16,7 +17,7 @@ export default {
   data() {
     return {
       lists: [],
-      error: "",
+      status: "",
       title: ""
     };
   },
@@ -26,9 +27,11 @@ export default {
   methods: {
     async getLists() {
       try {
+        this.status = "loading";
         this.lists = (await ListService.getLists()).data;
+        this.status = "";
       } catch (err) {
-        this.error = err.message;
+        this.status = { type: "error", message: err };
       }
     },
     async addList() {

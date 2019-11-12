@@ -2,6 +2,7 @@
   <app-table
     title="Persons"
     :content="persons"
+    :status="status"
     content-path="name"
     @add-item="addPerson"
     @open-item="openPerson"
@@ -26,7 +27,7 @@ export default {
   data() {
     return {
       persons: [],
-      error: "",
+      status: "",
       name: ""
     };
   },
@@ -36,9 +37,11 @@ export default {
   methods: {
     async getPersons() {
       try {
+        this.status = "loading";
         this.persons = (await PersonService.getPersons()).data;
+        this.status = "";
       } catch (err) {
-        this.error = err.message;
+        this.status = { type: "error", message: err };
       }
     },
     async addPerson() {

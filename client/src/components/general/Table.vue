@@ -4,7 +4,13 @@
       {{ title }}
       <button class="table__add-btn" @click="$emit('add-item')"></button>
     </h4>
-    <ul class="table__content content">
+    <preloader class="table__content" v-if="status === 'loading'" />
+    <div v-else-if="status.message" class="table__content">
+      <p class="error-text">
+        {{ status.message }}
+      </p>
+    </div>
+    <ul v-else class="table__content content">
       <li
         v-for="(item, index) in content"
         :key="index"

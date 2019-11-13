@@ -1,5 +1,6 @@
 <template>
-  <panel :title="person.name">
+  <panel class="person-view" :title="fullName" :actions="true">
+    <!--    slot in panel for avatar -->
     {{ person }}
   </panel>
 </template>
@@ -16,6 +17,12 @@ export default {
   created() {
     this.getPerson();
   },
+  computed: {
+    fullName() {
+      const { name, surname, middleName } = this.person;
+      return `${surname} ${name} ${middleName}`;
+    }
+  },
   methods: {
     async getPerson() {
       try {
@@ -31,6 +38,6 @@ export default {
 </script>
 
 <style lang="scss">
-.person-info {
+.person-view {
 }
 </style>

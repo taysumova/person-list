@@ -1,6 +1,8 @@
 <template>
-  <panel :title="list.title">
-    {{ list }}
+  <panel class="list-view" :title="list.title" :actions="true">
+    <p class="list-view__description">
+      {{ list.description }}
+    </p>
   </panel>
 </template>
 

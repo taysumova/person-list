@@ -36,6 +36,10 @@ const routes = [
     component: () => import("../views/Person/Index.vue"),
     children: [
       {
+        path: "",
+        redirect: "create"
+      },
+      {
         path: "create",
         name: "create-person",
         meta: {
@@ -65,6 +69,10 @@ const routes = [
     path: "/list",
     component: () => import("../views/List/Index.vue"),
     children: [
+      {
+        path: "",
+        redirect: "create"
+      },
       {
         path: "create",
         name: "create-list",

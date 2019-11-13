@@ -37,7 +37,8 @@ export default {
   justify-content: center;
   padding: 80px 0 60px;
   position: relative;
-  min-height: 100%;
+  height: 100%;
+  min-height: 100vh;
   width: 100%;
   min-width: 320px;
 }

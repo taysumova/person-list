@@ -36,7 +36,7 @@ export default {
         });
         await this.$router.go(-1);
       } catch (e) {
-        this.error = e.data || "Error during adding person";
+        this.error = e;
       }
     }
   }

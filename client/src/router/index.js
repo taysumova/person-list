@@ -32,36 +32,64 @@ const routes = [
     component: () => import("../views/Register.vue")
   },
   {
-    path: "/list/create",
-    name: "create-list",
-    meta: {
-      layout: "app"
-    },
-    component: () => import("../views/List/AddList.vue")
+    path: "/person",
+    component: () => import("../views/Person/Index.vue"),
+    children: [
+      {
+        path: "create",
+        name: "create-person",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/Person/AddPerson.vue")
+      },
+      {
+        path: ":id",
+        name: "view-person",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/Person/ViewPerson.vue")
+      },
+      {
+        path: ":id/edit",
+        name: "edit-person",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/Person/EditPerson.vue")
+      }
+    ]
   },
   {
-    path: "/list/:id/edit",
-    name: "edit-list",
-    meta: {
-      layout: "app"
-    },
-    component: () => import("../views/List/EditList.vue")
-  },
-  {
-    path: "/person/create",
-    name: "create-person",
-    meta: {
-      layout: "app"
-    },
-    component: () => import("../views/Person/AddPerson.vue")
-  },
-  {
-    path: "/person/:id/edit",
-    name: "edit-person",
-    meta: {
-      layout: "app"
-    },
-    component: () => import("../views/Person/EditPerson.vue")
+    path: "/list",
+    component: () => import("../views/List/Index.vue"),
+    children: [
+      {
+        path: "create",
+        name: "create-list",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/List/AddList.vue")
+      },
+      {
+        path: ":id",
+        name: "view-list",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/List/ViewList.vue")
+      },
+      {
+        path: ":id/edit",
+        name: "edit-list",
+        meta: {
+          layout: "app"
+        },
+        component: () => import("../views/List/EditList.vue")
+      }
+    ]
   },
   {
     path: "/404",

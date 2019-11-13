@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import PersonService from "../../services/PersonService";
-import PersonForm from "../../components/person/PersonForm";
+import PersonService from "@/services/PersonService";
+import PersonForm from "@/components/person/PersonForm";
 
 export default {
   components: { PersonForm },
@@ -37,7 +37,7 @@ export default {
           this.$route.params.id
         )).data;
       } catch (e) {
-        this.error = e.data || "Error during getting person info";
+        this.error = e;
       }
     },
     async editPerson(personData) {
@@ -48,7 +48,7 @@ export default {
         });
         await this.$router.push({ path: "/" });
       } catch (e) {
-        this.error = e.data || "Error during adding person";
+        this.error = e;
       }
     }
   }

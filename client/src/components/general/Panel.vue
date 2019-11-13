@@ -23,7 +23,7 @@ export default {
   background: $base-color;
   margin: 1rem auto;
   padding: 0 1rem;
-  max-width: 800px;
+  max-width: 600px;
   width: 100%;
   &__header {
     color: $dark-accent;

@@ -39,7 +39,7 @@ export default {
     },
     openList(id) {
       // TO DO - DELETE ID - AND MAKE JUST VIEW PAGE AND FROM THERE GO TO EDIT
-      this.$router.push({ path: `list/${id}/edit` });
+      this.$router.push({ path: `list/${id}` });
     },
     async deleteList(id) {
       try {

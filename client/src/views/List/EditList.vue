@@ -34,7 +34,7 @@ export default {
       try {
         this.list = (await ListService.getList(this.$route.params.id)).data;
       } catch (e) {
-        this.error = e.data || "Error during getting list info";
+        this.error = e;
       }
     },
     async editList(listData) {
@@ -45,7 +45,7 @@ export default {
         });
         await this.$router.push({ path: "/" });
       } catch (e) {
-        this.error = e.data || "Error during adding list";
+        this.error = e;
       }
     }
   }

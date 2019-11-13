@@ -48,7 +48,7 @@ export default {
       await this.$router.push({ name: "create-person" });
     },
     openPerson(id) {
-      this.$router.push({ path: `person/${id}/edit` });
+      this.$router.push({ path: `person/${id}` });
     }
   }
 };

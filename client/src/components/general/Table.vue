@@ -77,7 +77,7 @@ export default {
       &:hover,
       &:active {
         cursor: pointer;
-        opacity: 0.7;
+        color: $accent;
       }
     }
   }

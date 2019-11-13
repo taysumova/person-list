@@ -17,6 +17,7 @@ import AppLayout from "./layouts/appLayout.vue";
 import Preloader from "./components/general/preloader/Preloader.vue";
 import Panel from "./components/general/Panel.vue";
 import Table from "./components/general/Table.vue";
+import ConfirmModal from "./components/general/modal/ConfirmModal.vue";
 import SelectInput from "./components/general/SelectInput.vue";
 
 Vue.use(VueI18n);
@@ -27,6 +28,7 @@ Vue.component("app-layout", AppLayout);
 
 Vue.component("preloader", Preloader);
 Vue.component("app-table", Table);
+Vue.component("confirm-modal", ConfirmModal);
 Vue.component("panel", Panel);
 Vue.component("select-input", SelectInput);
 

@@ -46,7 +46,7 @@ export default {
         await PersonService.updatePerson(this.$route.params.id, {
           ...personData
         });
-        await this.$router.push({ path: "/" });
+        await this.$router.go(-1);
       } catch (e) {
         this.error = e;
       }

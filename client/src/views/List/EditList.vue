@@ -43,7 +43,7 @@ export default {
         await ListService.updateList(this.$route.params.id, {
           ...listData
         });
-        await this.$router.push({ path: "/" });
+        await this.$router.go(-1);
       } catch (e) {
         this.error = e;
       }

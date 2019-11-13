@@ -31,7 +31,8 @@ app.use('/lists', listsRouter);
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;

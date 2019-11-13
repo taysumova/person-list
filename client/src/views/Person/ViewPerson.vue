@@ -1,5 +1,11 @@
 <template>
-  <panel class="person-view" :title="fullName" :actions="true">
+  <panel
+    class="person-view"
+    :title="fullName"
+    :actions="true"
+    :text="deleteText"
+    @delete-confirm="deletePerson"
+  >
     <!--    slot in panel for avatar -->
     {{ person }}
   </panel>
@@ -11,7 +17,8 @@ import PersonService from "../../services/PersonService";
 export default {
   data() {
     return {
-      person: ""
+      person: "",
+      error: ""
     };
   },
   created() {
@@ -21,6 +28,9 @@ export default {
     fullName() {
       const { name, surname, middleName } = this.person;
       return `${surname} ${name} ${middleName}`;
+    },
+    deleteText() {
+      return `Are you sure you want to delete the person<br/><b>${this.fullName}</b>?`;
     }
   },
   methods: {
@@ -29,8 +39,16 @@ export default {
         this.person = (await PersonService.getPerson(
           this.$route.params.id
         )).data;
-      } catch (e) {
-        this.error = e;
+      } catch (err) {
+        this.error = err;
+      }
+    },
+    async deletePerson() {
+      try {
+        await PersonService.deletePerson(this.$route.params.id);
+        await this.$router.go(-1);
+      } catch (err) {
+        this.error = err;
       }
     }
   }

@@ -1,19 +1,30 @@
 <template>
   <div class="panel">
+    <confirm-modal
+      :text="text"
+      :open="deleteMode"
+      @confirm-action="$emit('delete-confirm')"
+      @cancel-action="deleteMode = false"
+    ></confirm-modal>
+
     <button class="btn--back" @click="$router.go(-1)">
       {{ $t("goBack") }}
     </button>
+
     <slot name="avatar"></slot>
+
     <h4 class="panel__header">
       {{ title }}
     </h4>
+
     <div v-if="actions" class="panel__actions">
       <button class="btn-circle btn-circle--edit" @click="editAction"></button>
       <button
         class="btn-circle btn-circle--delete"
-        @click="deleteAction"
+        @click="deleteMode = true"
       ></button>
     </div>
+
     <div class="panel__content">
       <slot></slot>
     </div>
@@ -23,7 +34,7 @@
 <script>
 export default {
   name: "app-table",
-  props: ["title", "status", "actions"],
+  props: ["title", "status", "actions", "text"],
   data() {
     return {
       deleteMode: false
@@ -33,8 +44,8 @@ export default {
     editAction() {
       this.$router.push({ path: `${this.$route.params.id}/edit` });
     },
-    deleteAction() {
-      this.deleteMode = true;
+    deleteConfirm() {
+      this.$emit("delete-action");
     }
   }
 };

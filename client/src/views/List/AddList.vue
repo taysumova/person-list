@@ -33,9 +33,9 @@ export default {
         await ListService.addList({
           ...listData
         });
-        await this.$router.push({ path: "/" });
+        await this.$router.go(-1);
       } catch (e) {
-        this.error = e.data || "Error during adding list";
+        this.error = e;
       }
     }
   }

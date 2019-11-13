@@ -40,7 +40,6 @@ export default {
   methods: {
     async changeLocale(locale) {
       this.$i18n.locale = locale;
-      await this.$store.dispatch("setLocale", locale);
       this.isOpen = false;
     }
   }

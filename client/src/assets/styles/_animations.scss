@@ -34,3 +34,20 @@
     opacity: 1;
   }
 }
+
+.opacity {
+  position: relative;
+  animation-name: opacity;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

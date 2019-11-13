@@ -13,12 +13,10 @@
         required
       ></v-text-field>
 
-      <v-text-field
-        primary
+      <v-textarea
         v-model="localList.description"
         :label="$t('forms.description')"
-        required
-      ></v-text-field>
+      ></v-textarea>
 
       <slot></slot>
 

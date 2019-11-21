@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <panel
     class="person-view"
     :title="fullName"
@@ -11,7 +11,9 @@
     </template>
 
     <div class="person-view__contacts contacts">
-      <a href="#" class="contacts__item contacts__email">{{ person.email }}</a>
+      <a :href="'mailto:' + person.email" class="contacts__item contacts__email">
+        {{ person.email }}
+      </a>
       <a :href="'tel:' + person.phone" class="contacts__item contacts__phone">
         {{ person.phone }}
       </a>

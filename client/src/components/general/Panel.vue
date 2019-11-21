@@ -5,7 +5,7 @@
       :open="deleteMode"
       @confirm-action="$emit('delete-confirm')"
       @cancel-action="deleteMode = false"
-    ></confirm-modal>
+    />
 
     <button class="btn--back" @click="$router.go(-1)">
       {{ $t("goBack") }}

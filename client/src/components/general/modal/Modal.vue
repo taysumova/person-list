@@ -30,6 +30,7 @@ export default {
   align-items: center;
   justify-content: center;
   z-index: 100;
+  transition: all .3s ease-in;
   &__inner {
     background: #fff;
     border-radius: 8px;

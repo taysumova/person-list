@@ -9,11 +9,11 @@ module.exports = {
 };
 
 async function getAll(userId) {
-  return await PersonModel.find().where({author: userId});
+  return await PersonModel.find().select('name surname').where({author: userId});
 }
 
 async function getById(id) {
-  return await PersonModel.findById(id);
+  return await PersonModel.findById(id).populate('list');
 }
 
 async function create(userId, params) {
@@ -31,7 +31,7 @@ async function update(id, params) {
   // copy PersonParam properties to person
   Object.assign(person, params);
 
-  await person.save();
+  return await person.save();
 }
 
 async function _delete(id) {

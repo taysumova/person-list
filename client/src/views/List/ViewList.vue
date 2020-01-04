@@ -15,14 +15,28 @@
     </h4>
 
     <ul>
-      <li></li>
+      <li
+        v-for="(person, index) in list.persons"
+        :key="index"
+      >
+        {{ person.name }}
+      </li>
     </ul>
 
     <modal :status="otherPersons" @close-modal="otherPersons = false">
-      Modal
+      <ul>
+        <li
+          v-for="(person, index) in newPersons"
+          :key="index"
+          @click="bindPersonToList(person._id)"
+        >
+          {{ person.name }}
+        </li>
+      </ul>
     </modal>
+
     <button class="list-view__add-btn" @click="openPersons">
-      +&nbsp;{{ $t("general.addPerson") }}
+      +&nbsp;{{ $t("general.addListPerson") }}
     </button>
   </panel>
 </template>
@@ -59,10 +73,34 @@ export default {
     },
     async openPersons() {
       try {
+        let persons = (await PersonService.getPersons()).data;
         this.otherPersons = true;
-        this.newPersons = (await PersonService.getPersons()).data;
+        this.list.persons.forEach(addedPerson => {
+          persons.forEach((person, index) => {
+            if (person._id === addedPerson._id) {
+              persons.splice(index, 1);
+            }
+          });
+        });
+        this.newPersons = persons;
       } catch (e) {
         this.error = e;
+      }
+    },
+    async bindPersonToList(personId) {
+      try {
+        let { persons } = this.list;
+        persons.push(personId);
+
+        await ListService.updateList(this.$route.params.id, {
+          persons
+        });
+
+
+        this.$forceUpdate();
+      } catch (e) {
+        this.error = e;
+        console.log(e);
       }
     },
     async deleteList() {

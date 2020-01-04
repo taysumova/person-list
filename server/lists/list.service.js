@@ -13,13 +13,13 @@ async function getAll(userId) {
 }
 
 async function getById(id) {
-  return await ListModel.findById(id);
+  return await ListModel.findById(id).populate('persons name');
 }
 
 async function create(userId, params) {
   const list = new ListModel(params);
   list.author = userId;
-  await list.save();
+  return await list.save();
 }
 
 async function update(id, params) {
@@ -31,7 +31,7 @@ async function update(id, params) {
   // copy ListParam properties to list
   Object.assign(list, params);
 
-  await list.save();
+  return await list.save();
 }
 
 async function _delete(id) {

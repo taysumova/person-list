@@ -51,6 +51,7 @@
     "addList": "Add list",
     "editList": "Edit list",
     "addPerson": "Add person",
-    "editPerson": "Edit person"
+    "editPerson": "Edit person",
+    "addListPerson": "Add person to list"
   }
 }

@@ -15,6 +15,10 @@ const ListSchema = new Schema({
     required: true,
     ref: 'User'
   },
+  persons: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Person'
+  }],
   createdAt:{
     type: Date,
     default: Date.now

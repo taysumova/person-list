@@ -6,6 +6,8 @@
       lazy-validation
       class="form form--add-person"
     >
+      <image-upload />
+
       <v-text-field
         v-model="localPerson.surname"
         :label="$t('forms.surname')"
@@ -61,9 +63,11 @@
 
 <script>
 import { personRules } from "../../helpers/rules";
+import ImageUpload from "../general/ImageUpload";
 
 export default {
   name: "person-form",
+  components: { ImageUpload },
   props: ["title", "person"],
   data() {
     return {
@@ -71,6 +75,7 @@ export default {
         surname: "",
         name: "",
         middleName: "",
+        photo: "",
         email: "",
         phone: "",
         address: "",

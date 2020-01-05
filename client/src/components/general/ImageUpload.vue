@@ -1,70 +1,42 @@
 <template>
   <div class="sidebar__avatar avatar">
     <img
-      :src="user.avatar ? user.avatar : require(`@/assets/icons/avatar.svg`)"
-      :class="user.avatar ? '' : 'avatar__icon'"
+      :src="image ? image : require(`@/assets/icons/avatar.svg`)"
+      :class="image ? '' : 'avatar__icon'"
       alt="avatar"
     />
     <label class="avatar-download">
       {{ $t("update") }}
-      <input type="file" accept="image/*" @change="handleAvatar" />
+      <input type="file" accept="image/*" @change="handleImage" />
     </label>
-    <v-snackbar v-model="error" top left :timeout="5000" class="error-block">
-      ERROR
-      <button @click="error = false">
-        <img src="@/assets/icons/close.svg" alt="close" />
-      </button>
-    </v-snackbar>
-    <v-snackbar
-      v-model="success"
-      top
-      left
-      :timeout="5000"
-      class="success-block"
-    >
-      SUCCESS
-      <button @click="success = false">
-        <img src="@/assets/icons/close.svg" alt="close" />
-      </button>
-    </v-snackbar>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
-import UserService from "@/services/UserService";
-
 export default {
-  name: "sidebar-avatar",
+  name: "image-upload",
   data() {
     return {
-      success: false,
-      error: false,
-      avatar: ""
+      image: ""
     };
   },
-  computed: {
-    ...mapState(["user"])
-  },
   methods: {
-    async handleAvatar(e) {
+    async handleImage(e) {
       try {
         if (typeof FileReader === "function") {
           const reader = new FileReader();
           reader.onload = async event => {
-            this.avatar = event.target.result;
+            this.image = event.target.result;
             // send whole object of user to avoid delete other properties
-            await UserService.updateProfile({
-              ...this.user,
-              avatar: this.avatar
-            });
-            await this.$store.dispatch("setUserAvatar", this.avatar);
-            this.success = true;
+            // await UserService.updateProfile({
+            //   ...this.user,
+            //   avatar: this.avatar
+            // });
           };
           reader.readAsDataURL(e.target.files[0]);
         }
       } catch (err) {
-        this.error = true;
+        console.log(err);
       }
     }
   }
@@ -72,9 +44,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/vars";
 .sidebar {
   &__avatar {
-    background: #44b4e4;
+    background: $dark-accent;
     border-radius: 50%;
     display: flex;
     cursor: pointer;
@@ -107,6 +80,7 @@ export default {
   &__icon {
     width: 50%;
     height: 50%;
+    padding: 30px;
   }
   input[type="file"] {
     display: none;

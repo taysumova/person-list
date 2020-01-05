@@ -12,6 +12,9 @@ export default {
   addPerson(personParams) {
     return ApiAuth().post(path, personParams);
   },
+  uploadImage(data) {
+    return ApiAuth().post(path + "image", data);
+  },
   updatePerson(id, data) {
     return ApiAuth().patch(path + id, data);
   },

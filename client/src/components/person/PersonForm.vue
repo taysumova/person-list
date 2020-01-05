@@ -6,7 +6,7 @@
       lazy-validation
       class="form form--add-person"
     >
-      <image-upload />
+      <image-upload @image-load="setImage" />
 
       <v-text-field
         v-model="localPerson.surname"
@@ -97,6 +97,9 @@ export default {
       if (this.$refs.form.validate()) {
         this.$emit("person-action", this.localPerson);
       }
+    },
+    setImage(image) {
+      this.localPerson.photo = image;
     }
   }
 };

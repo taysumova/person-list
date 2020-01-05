@@ -17,6 +17,9 @@ const PersonSchema = new Schema({
     type: String,
     trim: true
   },
+  photo: {
+    type: String
+  },
   email: {
     type: String,
     validate: {
@@ -37,7 +40,7 @@ const PersonSchema = new Schema({
     trim: true
   },
   status: {
-    // TO DO ADD ARRAY OF VALID VALUES - NEW, IN WORK, CANCELED, ARCHIVED
+    // TO DO: ADD ARRAY OF VALID VALUES - NEW, IN WORK, CANCELED, ARCHIVED
     type: String
   },
   author:{

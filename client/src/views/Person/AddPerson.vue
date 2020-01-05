@@ -2,7 +2,6 @@
   <person-form
     class="add-person"
     :title="$t('general.addPerson')"
-    :person="person"
     @person-action="addPerson"
   >
     <p class="error-text">
@@ -19,11 +18,6 @@ export default {
   components: { PersonForm },
   data() {
     return {
-      person: {
-        name: "",
-        listId: "",
-        comment: ""
-      },
       error: ""
     };
   },
@@ -31,8 +25,13 @@ export default {
     async addPerson(personData) {
       try {
         this.error = "";
+        const { photo } = personData;
+        const imageRes = await PersonService.uploadImage({
+          photo
+        });
         await PersonService.addPerson({
-          ...personData
+          ...personData,
+          photo: imageRes.data.image_url
         });
         await this.$router.go(-1);
       } catch (e) {

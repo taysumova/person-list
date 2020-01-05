@@ -27,11 +27,7 @@ export default {
           const reader = new FileReader();
           reader.onload = async event => {
             this.image = event.target.result;
-            // send whole object of user to avoid delete other properties
-            // await UserService.updateProfile({
-            //   ...this.user,
-            //   avatar: this.avatar
-            // });
+            this.$emit("image-load", this.image);
           };
           reader.readAsDataURL(e.target.files[0]);
         }

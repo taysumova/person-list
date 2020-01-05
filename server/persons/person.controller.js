@@ -1,9 +1,17 @@
+const cloudinary = require('cloudinary').v2;
 const express = require('express');
 const router = express.Router();
 const personService = require('./person.service');
 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET
+});
+
 // routes
 router.post('/', create);
+router.post('/image', image);
 router.get('/', getAll);
 router.get('/:id', getById);
 router.patch('/:id', update);
@@ -29,6 +37,18 @@ function getById(req, res, next) {
   .catch(err => next(err));
 }
 
+function image(req, res, next) {
+  const { photo } = req.body;
+  cloudinary.uploader.upload(photo, function(error, result) {
+    if(result) {
+      res.json({ image_url: result.url });
+    }
+    if(error) {
+      next(error);
+    }
+  });
+}
+
 function update(req, res, next) {
   personService.update(req.params.id, req.body)
   .then(() => res.json({}))
@@ -37,6 +57,6 @@ function update(req, res, next) {
 
 function _delete(req, res, next) {
   personService.delete(req.params.id)
-  .then(() => res.json({}))
+  .then(() => res.json({ status: "done" }))
   .catch(err => next(err));
 }

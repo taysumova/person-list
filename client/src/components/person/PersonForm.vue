@@ -6,7 +6,7 @@
       lazy-validation
       class="form form--add-person"
     >
-      <image-upload @image-load="setImage" />
+      <image-upload :photo="localPerson.photo" @image-load="setImage" />
 
       <v-text-field
         v-model="localPerson.surname"

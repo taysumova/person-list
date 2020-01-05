@@ -1,6 +1,8 @@
 <template>
   <div class="sidebar__avatar avatar">
+    <img v-if="photo" :src="photo" alt="avatar" />
     <img
+      v-else
       :src="image ? image : require(`@/assets/icons/avatar.svg`)"
       :class="image ? '' : 'avatar__icon'"
       alt="avatar"
@@ -15,6 +17,7 @@
 <script>
 export default {
   name: "image-upload",
+  props: ["photo"],
   data() {
     return {
       image: ""

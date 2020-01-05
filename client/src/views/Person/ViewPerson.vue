@@ -7,7 +7,7 @@
     @delete-confirm="deletePerson"
   >
     <template v-slot:avatar>
-      <!--      avatar-->
+      <img :src="person.photo" alt="Photo" width="300" height="300px">
     </template>
 
     <div class="person-view__contacts contacts">
@@ -32,7 +32,7 @@ import PersonService from "../../services/PersonService";
 export default {
   data() {
     return {
-      person: "",
+      person: {},
       error: ""
     };
   },

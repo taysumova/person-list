@@ -43,8 +43,13 @@ export default {
     async editPerson(personData) {
       try {
         this.error = "";
+        const { photo } = personData;
+        const imageRes = await PersonService.uploadImage({
+          photo
+        });
         await PersonService.updatePerson(this.$route.params.id, {
-          ...personData
+          ...personData,
+          photo: imageRes.data.image_url
         });
         await this.$router.go(-1);
       } catch (e) {

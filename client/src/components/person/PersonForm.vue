@@ -1,41 +1,46 @@
 <template>
-  <panel class="add-list" :title="title">
-    <v-form
-      ref="form"
-      v-model="valid"
-      lazy-validation
-      class="form form--add-person"
-    >
-      <image-upload :photo="localPerson.photo" @image-load="setImage" />
+  <panel :title="title">
+    <v-form ref="form" v-model="valid" lazy-validation class="person-form">
+      <div class="person-form__middle">
+        <image-upload
+          :photo="localPerson.photo"
+          @image-load="setImage"
+          class="person-form__image"
+        />
+        <div class="person-form__inputs">
+          <v-text-field
+            v-model="localPerson.surname"
+            :label="$t('forms.surname')"
+          ></v-text-field>
 
-      <v-text-field
-        v-model="localPerson.surname"
-        :label="$t('forms.surname')"
-      ></v-text-field>
+          <v-text-field
+            v-model="localPerson.name"
+            :rules="nameRules"
+            :label="$t('forms.name')"
+            required
+          ></v-text-field>
 
-      <v-text-field
-        v-model="localPerson.name"
-        :rules="nameRules"
-        :label="$t('forms.name')"
-        required
-      ></v-text-field>
+          <v-text-field
+            v-model="localPerson.middleName"
+            :label="$t('forms.middleName')"
+          ></v-text-field>
+        </div>
+      </div>
 
-      <v-text-field
-        v-model="localPerson.middleName"
-        :label="$t('forms.middleName')"
-      ></v-text-field>
-
-      <v-text-field
-        v-model="localPerson.email"
-        :rules="emailRules"
-        label="Email"
-      ></v-text-field>
-
-      <v-text-field
-        v-model="localPerson.phone"
-        maxlength="12"
-        :label="$t('forms.phone')"
-      ></v-text-field>
+      <div class="person-form__contacts contacts">
+        <v-text-field
+          v-model="localPerson.phone"
+          maxlength="19"
+          :label="$t('forms.phone')"
+          class="contacts__item contacts__phone"
+        ></v-text-field>
+        <v-text-field
+          v-model="localPerson.email"
+          :rules="emailRules"
+          label="Email"
+          class="contacts__item"
+        ></v-text-field>
+      </div>
 
       <v-text-field
         v-model="localPerson.address"
@@ -105,4 +110,29 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.person-form {
+  margin: 0 1.5rem;
+  &__image {
+    margin-right: 30px;
+    margin-top: 30px;
+  }
+  &__inputs {
+    width: calc(100% - 169px);
+  }
+  &__contacts {
+    display: flex;
+  }
+  .contacts {
+    &__item:first-of-type {
+      margin-right: 60px;
+    }
+    &__phone {
+      max-width: 140px;
+    }
+  }
+  &__middle {
+    display: flex;
+  }
+}
+</style>

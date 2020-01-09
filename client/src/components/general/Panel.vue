@@ -11,8 +11,6 @@
       {{ $t("goBack") }}
     </button>
 
-    <slot name="avatar"></slot>
-
     <h4 class="panel__header">
       {{ title }}
     </h4>
@@ -66,7 +64,7 @@ export default {
     font-size: 1.4rem;
     font-weight: normal;
     text-transform: uppercase;
-    padding: 0.8rem 0;
+    padding-bottom: 0.8rem;
     position: relative;
     &:after {
       background-color: $dark-accent;

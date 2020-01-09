@@ -1,4 +1,4 @@
-<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<template>
   <panel
     class="person-view"
     :title="fullName"
@@ -6,20 +6,34 @@
     :text="deleteText"
     @delete-confirm="deletePerson"
   >
-    <template v-slot:avatar>
-      <img :src="person.photo" alt="Photo" width="300" height="300px">
-    </template>
-
-    <div class="person-view__contacts contacts">
-      <a :href="'mailto:' + person.email" class="contacts__item contacts__email">
-        {{ person.email }}
-      </a>
-      <a :href="'tel:' + person.phone" class="contacts__item contacts__phone">
-        {{ person.phone }}
-      </a>
-      <span class="contacts__item contacts__address">{{ person.address }}</span>
+    <preloader v-if="loading" />
+    <div v-else class="person-view__main">
+      <img
+        :src="person.photo"
+        class="person-view__photo"
+        alt="Photo"
+        width="150"
+        height="150px"
+      />
+      <div class="person-view__contacts contacts">
+        <a
+          :href="'mailto:' + person.email"
+          class="contacts__item contacts__email"
+        >
+          {{ person.email }}
+        </a>
+        <a :href="'tel:' + person.phone" class="contacts__item contacts__phone">
+          {{ person.phone }}
+        </a>
+        <span class="contacts__item contacts__address">{{
+          person.address
+        }}</span>
+      </div>
     </div>
-    <article class="person-view__additional additional">
+    <article
+      v-if="!loading && person.comments"
+      class="person-view__additional additional"
+    >
       <h4 class="additional__title">{{ $t("additionalInfo") }}</h4>
       <p class="additional__text">{{ person.comments }}</p>
     </article>
@@ -33,7 +47,8 @@ export default {
   data() {
     return {
       person: {},
-      error: ""
+      error: "",
+      loading: false
     };
   },
   created() {
@@ -41,7 +56,7 @@ export default {
   },
   computed: {
     fullName() {
-      const { name, surname, middleName } = this.person;
+      let { name = "", surname = "", middleName = "" } = this.person;
       return `${surname} ${name} ${middleName}`;
     },
     deleteText() {
@@ -51,11 +66,14 @@ export default {
   methods: {
     async getPerson() {
       try {
+        this.loading = true;
         this.person = (await PersonService.getPerson(
           this.$route.params.id
         )).data;
       } catch (err) {
         this.error = err;
+      } finally {
+        this.loading = false;
       }
     },
     async deletePerson() {
@@ -75,10 +93,26 @@ export default {
 @import "../../assets/styles/animations";
 
 .person-view {
+  .panel__header {
+    text-align: center;
+    &:after {
+      left: 41%;
+    }
+  }
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
   &__contacts {
     display: flex;
     flex-direction: column;
-    margin: 0.5rem 0 3rem;
   }
   .contacts {
     &__item {
@@ -106,14 +140,14 @@ export default {
     margin: 1rem 0;
   }
   .additional {
+    text-align: center;
     &__title {
       font-size: 1rem;
       text-transform: uppercase;
       margin-bottom: 1rem;
     }
     &__text {
-      border-left: 2px solid $dark-accent;
-      padding-left: 0.5rem;
+      color: $textGray;
     }
   }
 }

@@ -44,12 +44,14 @@ export default {
       try {
         this.error = "";
         const { photo } = personData;
-        const imageRes = await PersonService.uploadImage({
-          photo
-        });
+        const imageRes = photo
+          ? await PersonService.uploadImage({
+              photo
+            })
+          : "";
         await PersonService.updatePerson(this.$route.params.id, {
           ...personData,
-          photo: imageRes.data.image_url
+          photo: imageRes ? imageRes.data.image_url : ""
         });
         await this.$router.go(-1);
       } catch (e) {

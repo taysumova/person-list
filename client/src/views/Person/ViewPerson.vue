@@ -9,6 +9,7 @@
     <preloader v-if="loading" />
     <div v-else class="person-view__main">
       <img
+        v-if="person.photo"
         :src="person.photo"
         class="person-view__photo"
         alt="Photo"

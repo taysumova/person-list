@@ -53,5 +53,11 @@
     "addPerson": "Add person",
     "editPerson": "Edit person",
     "addListPerson": "Add person to list"
+  },
+  "person": {
+    "empty": "You don't have any added persons yet"
+  },
+  "list": {
+    "empty": "You don't have any added lists yet"
   }
 }

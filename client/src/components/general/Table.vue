@@ -10,6 +10,9 @@
         {{ status.message }}
       </p>
     </div>
+    <p v-else-if="!content.length" class="content--empty">
+      {{ $t(emptyText) }}
+    </p>
     <ul v-else class="table__content content">
       <li
         v-for="(item, index) in content"
@@ -26,7 +29,7 @@
 <script>
 export default {
   name: "app-table",
-  props: ["title", "content", "contentPath", "status"]
+  props: ["title", "content", "contentPath", "status", "emptyText"]
 };
 </script>
 
@@ -71,6 +74,13 @@ export default {
     padding: 0.5rem 1rem 2rem;
   }
   .content {
+    &--empty {
+      background: $base-color;
+      color: #000;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 2rem 0.5rem;
+    }
     &__item {
       border-bottom: 1px solid #000;
       line-height: 3rem;

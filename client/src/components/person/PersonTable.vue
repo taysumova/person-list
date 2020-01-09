@@ -3,6 +3,7 @@
     :title="$t('general.persons')"
     :content="persons"
     :status="status"
+    empty-text="person.empty"
     content-path="name"
     @add-item="addPerson"
     @open-item="openPerson"

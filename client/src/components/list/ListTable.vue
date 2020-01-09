@@ -3,6 +3,7 @@
     :title="$t('general.lists')"
     :content="lists"
     :status="status"
+    empty-text="list.empty"
     content-path="title"
     @add-item="addList"
     @open-item="openList"

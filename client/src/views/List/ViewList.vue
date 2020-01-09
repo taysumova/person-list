@@ -1,5 +1,7 @@
 <template>
+  <preloader v-if="loading" />
   <panel
+    v-else
     class="list-view"
     :title="list.title"
     :actions="true"
@@ -51,6 +53,7 @@ export default {
   data() {
     return {
       list: {},
+      loading: false,
       newPersons: {},
       otherPersons: false
     };
@@ -66,9 +69,12 @@ export default {
   methods: {
     async getList() {
       try {
+        this.loading = true;
         this.list = (await ListService.getList(this.$route.params.id)).data;
       } catch (e) {
         this.error = e;
+      } finally {
+        this.loading = false;
       }
     },
     async openPersons() {

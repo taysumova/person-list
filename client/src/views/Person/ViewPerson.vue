@@ -1,13 +1,14 @@
 <template>
+  <preloader v-if="loading" />
   <panel
+    v-else
     class="person-view"
     :title="fullName"
     :actions="true"
     :text="deleteText"
     @delete-confirm="deletePerson"
   >
-    <preloader v-if="loading" />
-    <div v-else class="person-view__main">
+    <div class="person-view__main">
       <img
         v-if="person.photo"
         :src="person.photo"

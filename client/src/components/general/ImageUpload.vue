@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar__avatar avatar">
+  <div class="avatar">
     <img v-if="photo" :src="photo" alt="avatar" />
     <img
       v-else
@@ -44,38 +44,30 @@ export default {
 
 <style lang="scss">
 @import "../../assets/styles/vars";
-.sidebar {
-  &__avatar {
-    background: $dark-accent;
-    border-radius: 50%;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    margin: 10px auto 30px;
-    width: 179px;
-    height: 179px;
-    position: relative;
-    @media screen and (max-width: 1110px) {
-      margin: 10px 0;
-      width: 139px;
-      height: 139px;
-    }
-    &:hover .avatar-download {
-      visibility: visible !important;
-    }
-    &:active .avatar-download {
-      visibility: visible !important;
-    }
-    img {
-      border-radius: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-}
+
 .avatar {
+  background: $dark-accent;
+  border-radius: 50%;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  width: 139px;
+  height: 139px;
+  position: relative;
+  &:hover .avatar-download {
+    visibility: visible !important;
+  }
+  &:active .avatar-download {
+    visibility: visible !important;
+  }
+  img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   &__icon {
     width: 50%;
     height: 50%;
@@ -97,14 +89,10 @@ export default {
     padding: 39px 0 10px;
     text-align: center;
     position: absolute;
-    width: 179px;
-    height: 90px;
+    width: 139px;
+    height: 70px;
     z-index: 120;
     visibility: hidden;
-    @media screen and (max-width: 1110px) {
-      width: 139px;
-      height: 70px;
-    }
     &:before {
       background: url("../../assets/icons/camera.svg") 50% center no-repeat;
       content: "";

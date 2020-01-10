@@ -107,10 +107,11 @@ export default {
     justify-content: center;
   }
   &__photo {
-    width: 150px;
-    height: 150px;
     border-radius: 50%;
     margin-right: 20px;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
   }
   &__contacts {
     display: flex;

@@ -28,7 +28,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../assets/styles/vars";
+@import "../../../assets/styles/mixins";
+
 .confirm-modal {
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
@@ -59,36 +60,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    button {
-      border-radius: 4px;
-      padding: 10px 20px;
-      text-transform: uppercase;
-      min-width: 100px;
-      cursor: pointer;
-      margin: 1rem;
-      transition: all 0.1s ease-in;
-    }
   }
   &__btn {
     &--yes {
-      background-color: $base-color;
-      border: 2px solid $error;
-      color: $error;
-      &:hover,
-      &:active {
-        background: $error;
-        color: $base-color;
-      }
+      @include button($error);
     }
     &--no {
-      background-color: $base-color;
-      border: 2px solid $grey;
-      color: $grey;
-      &:hover,
-      &:active {
-        background: $grey;
-        color: $base-color;
-      }
+      @include button($textGray);
     }
   }
 }

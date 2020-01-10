@@ -1,0 +1,19 @@
+@import "vars";
+
+@mixin button($color: $dark-accent, $bgColor: $base-color) {
+  background-color: $bgColor;
+  border: 2px solid $color;
+  color: $color;
+  border-radius: 4px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  min-width: 100px;
+  cursor: pointer;
+  margin: 1rem;
+  transition: all 0.1s ease-in;
+  &:hover,
+  &:active {
+    background: $color;
+    color: $bgColor;
+  }
+}

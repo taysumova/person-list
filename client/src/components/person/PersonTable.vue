@@ -4,7 +4,7 @@
     :content="persons"
     :status="status"
     empty-text="person.empty"
-    content-path="name"
+    :content-path="['name', 'middleName', 'surname']"
     @add-item="addPerson"
     @open-item="openPerson"
   />

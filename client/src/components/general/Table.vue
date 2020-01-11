@@ -20,7 +20,7 @@
         class="content__item"
         @click="$emit('open-item', item._id)"
       >
-        {{ item[contentPath] }}
+        {{ contentPath.map(path => item[path]).join(" ") }}
       </li>
     </ul>
   </div>
@@ -84,6 +84,9 @@ export default {
     &__item {
       border-bottom: 1px solid #000;
       line-height: 3rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
       &:hover,
       &:active {
         cursor: pointer;

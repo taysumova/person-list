@@ -4,7 +4,7 @@
     :content="lists"
     :status="status"
     empty-text="list.empty"
-    content-path="title"
+    :content-path="['title']"
     @add-item="addList"
     @open-item="openList"
   />

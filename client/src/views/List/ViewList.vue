@@ -21,6 +21,9 @@
         v-for="(person, index) in list.persons"
         :key="index"
         class="persons__card card"
+        @click="
+          $router.push({ name: 'view-person', params: { id: person._id } })
+        "
       >
         <img
           :src="

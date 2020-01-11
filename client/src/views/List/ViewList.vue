@@ -16,18 +16,31 @@
       {{ $t("general.persons") }}
     </h4>
 
-    <ul class="list-view__persons">
-      <li v-for="(person, index) in list.persons" :key="index">
-        {{ fullName(person) }}
+    <ul class="list-view__persons persons">
+      <li
+        v-for="(person, index) in list.persons"
+        :key="index"
+        class="persons__card card"
+      >
+        <img
+          :src="
+            person.photo ? person.photo : require(`@/assets/icons/avatar.svg`)
+          "
+          alt="Person"
+          class="card__image"
+        />
+        <span class="card__text">
+          {{ fullName(person) }}
+        </span>
       </li>
     </ul>
 
     <modal :status="otherPersons" @close-modal="otherPersons = false">
-      <ul class="list-view__persons persons">
+      <ul class="list-view__select select">
         <li
           v-for="(person, index) in newPersons"
           :key="index"
-          class="persons__card card"
+          class="select__card card"
           @click="bindPersonToList(person._id)"
         >
           <img
@@ -144,9 +157,30 @@ export default {
     margin: 1rem 0;
   }
   &__persons {
+    display: flex;
+    flex-wrap: wrap;
     margin-top: 0.5rem;
   }
   .persons {
+    &__card {
+      @include card();
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 150px;
+    }
+    .card {
+      &__image {
+        @include image(60);
+        margin-bottom: 0.5rem;
+      }
+      &__text {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
+  }
+  .select {
     &__card {
       @include card();
       background: $accent;
@@ -156,18 +190,16 @@ export default {
       width: 400px;
       margin: 0.4rem auto;
     }
+
     .card {
       &__image {
-        background: $dark-accent;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        @include image(40);
         margin-right: 1rem;
       }
+
       &__text {
-        font-weight: bold;
+        font-size: 1.2rem;
         text-align: left;
-        text-transform: uppercase;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;

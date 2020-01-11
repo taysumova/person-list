@@ -61,7 +61,6 @@
 }
 
 @mixin card() {
-  background: #fff;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   display: inline-block;
@@ -74,6 +73,13 @@
   &:target {
     box-shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.5);
   }
+}
+
+@mixin image($units: 150) {
+  background: $dark-accent;
+  border-radius: 50%;
+  width: $units + px;
+  height: $units + px;
 }
 
 @keyframes ripple {

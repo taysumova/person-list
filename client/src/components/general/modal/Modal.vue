@@ -38,7 +38,7 @@ export default {
     text-align: center;
     margin-bottom: 80px;
     max-width: 500px;
-    width: 90%;
+    width: 80%;
     position: relative;
   }
   .btn--close {
@@ -47,7 +47,7 @@ export default {
     height: 20px;
     position: absolute;
     top: 0;
-    right: -20px;
+    right: -25px;
   }
 }
 </style>

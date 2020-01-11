@@ -62,7 +62,7 @@ export default {
       return `${surname} ${name} ${middleName}`;
     },
     deleteText() {
-      return `Are you sure you want to delete the person<br/><b>${this.fullName}</b>?`;
+      return `Are you sure you want to delete the person<br/>&laquo;<b>${this.fullName}</b>&raquo;?`;
     }
   },
   methods: {
@@ -95,16 +95,10 @@ export default {
 @import "../../assets/styles/animations";
 
 .person-view {
-  .panel__header {
-    text-align: center;
-    &:after {
-      left: 41%;
-    }
-  }
   &__main {
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
   }
   &__photo {
     border-radius: 50%;
@@ -143,7 +137,6 @@ export default {
     margin: 1rem 0;
   }
   .additional {
-    text-align: center;
     &__title {
       font-size: 1rem;
       text-transform: uppercase;

@@ -47,10 +47,11 @@ export default {
   &__inner {
     background: #fff;
     border-radius: 8px;
-    padding: 1rem;
+    padding: 2rem 1rem;
     text-align: center;
     margin-bottom: 80px;
-    max-width: 600px;
+    max-width: 500px;
+    width: 90%;
   }
   &__text {
     font-size: 1.1rem;

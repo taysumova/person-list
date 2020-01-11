@@ -16,7 +16,7 @@
       {{ $t("general.persons") }}
     </h4>
 
-    <ul>
+    <ul class="list-view__persons">
       <li
         v-for="(person, index) in list.persons"
         :key="index"
@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     deleteText() {
-      return `Are you sure you want to delete the list<br/><b>${this.list.title}</b>?`;
+      return `Are you sure you want to delete the list<br/>&laquo;<b>${this.list.title}</b>&raquo;?`;
     }
   },
   created() {
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/vars";
+@import "../../assets/styles/mixins";
 
 .list-view {
   &__title {
@@ -130,7 +130,10 @@ export default {
     margin-top: 2rem;
   }
   &__add-btn {
+    @include button();
     margin: 1rem 0;
+  }
+  &__persons {
   }
 }
 </style>

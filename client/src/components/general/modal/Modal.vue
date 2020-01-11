@@ -30,14 +30,15 @@ export default {
   align-items: center;
   justify-content: center;
   z-index: 100;
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
   &__inner {
     background: #fff;
     border-radius: 8px;
-    padding: 1rem 1.5rem;
+    padding: 2rem 1rem;
     text-align: center;
     margin-bottom: 80px;
-    max-width: 600px;
+    max-width: 500px;
+    width: 90%;
     position: relative;
   }
   .btn--close {

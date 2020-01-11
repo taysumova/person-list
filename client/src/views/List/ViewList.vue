@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/vars";
+@import "../../assets/styles/mixins";
 
 .list-view {
   &__title {
@@ -130,6 +130,7 @@ export default {
     margin-top: 2rem;
   }
   &__add-btn {
+    @include button();
     margin: 1rem 0;
   }
   &__persons {

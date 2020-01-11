@@ -1,19 +1,72 @@
 @import "vars";
+// with outline effect
+//@mixin button($bgColor: $dark-accent, $color: $base-color) {
+//  background-color: $bgColor;
+//  border-radius: 4px;
+//  color: $color;
+//  padding: 10px 20px;
+//  text-transform: uppercase;
+//  min-width: 100px;
+//  cursor: pointer;
+//  margin: 1rem;
+//  transition: all 0.1s ease-in;
+//  &:hover,
+//  &:active,
+//  &:target {
+//    background-color: $bgColor;
+//    color: $color;
+//  }
+//}
 
-@mixin button($color: $dark-accent, $bgColor: $base-color) {
+@mixin button($bgColor: $dark-accent, $color: $base-color) {
   background-color: $bgColor;
-  border: 2px solid $color;
-  color: $color;
+  border: none;
   border-radius: 4px;
+  box-sizing: border-box;
+  color: $color;
+  display: inline-block;
+  text-align: center;
   padding: 10px 20px;
-  text-transform: uppercase;
-  min-width: 100px;
-  cursor: pointer;
   margin: 1rem;
-  transition: all 0.1s ease-in;
+  min-width: 100px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in;
   &:hover,
-  &:active {
-    background: $color;
-    color: $bgColor;
+  &:target {
+    opacity: 0.8;
+  }
+  &:after {
+    background-color: rgba($color, 30%);
+    display: none;
+    content: "";
+    position: absolute;
+    min-width: 100px;
+    width: 100%;
+    min-height: 100px;
+    height: 100%;
+    margin-top: -50px;
+    margin-left: -50px;
+
+    /* Center the ripple */
+    top: 50%;
+    left: 50%;
+    animation: ripple 1s;
+    opacity: 0;
+  }
+  &:focus:not(:active):after {
+    display: block;
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity: 1;
+    transform: scale(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(10);
   }
 }

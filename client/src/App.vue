@@ -24,7 +24,7 @@ export default {
 @import "assets/styles/base";
 
 #app {
-  background-color: $bg-color;
+  background-color: rgba($bg-color, 80%);
   font-family: Abel, sans-serif;
   font-size: 14px;
   position: relative;

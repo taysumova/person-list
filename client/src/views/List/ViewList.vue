@@ -26,13 +26,15 @@
     </ul>
 
     <modal :status="otherPersons" @close-modal="otherPersons = false">
-      <ul>
+      <ul class="list-view__persons persons">
         <li
           v-for="(person, index) in newPersons"
           :key="index"
+          class="persons__card card"
           @click="bindPersonToList(person._id)"
         >
-          {{ person.name }}
+          <img :src="person.photo" alt="Person" class="card__image" />
+          <span class="card__text">{{ person.name }}</span>
         </li>
       </ul>
     </modal>
@@ -134,6 +136,31 @@ export default {
     margin: 1rem 0;
   }
   &__persons {
+    text-align: center;
+  }
+  .persons {
+    &__card {
+      @include card();
+      background: $accent;
+      display: flex;
+      align-items: center;
+      color: $base-color;
+      width: 400px;
+      margin: 0.4rem auto;
+    }
+    .card {
+      &__image {
+        background: $dark-accent;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 1rem;
+      }
+      &__text {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+    }
   }
 }
 </style>

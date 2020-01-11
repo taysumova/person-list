@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function getAll(userId) {
-  return await PersonModel.find().select('name surname').where({author: userId});
+  return await PersonModel.find().select('name surname middleName photo').where({author: userId});
 }
 
 async function getById(id) {

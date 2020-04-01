@@ -27,6 +27,9 @@ app.use('/persons', personsRouter);
 const listsRouter = require('./lists/list.controller');
 app.use('/lists', listsRouter);
 
+const eventsRouter = require('./events/event.controller');
+app.use('/events', eventsRouter);
+
 // MongoDB connection
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,

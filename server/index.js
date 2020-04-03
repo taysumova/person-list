@@ -30,6 +30,9 @@ app.use('/lists', listsRouter);
 const eventsRouter = require('./events/event.controller');
 app.use('/events', eventsRouter);
 
+const triggersRouter = require('./triggers/trigger.controller');
+app.use('/triggers', triggersRouter);
+
 // MongoDB connection
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true,

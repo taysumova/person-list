@@ -4,8 +4,7 @@ const eventService = require('./event.service');
 
 // routes
 router.post('/', create);
-router.get('/', getAll);
-router.get('/:id', getById);
+router.get('/:id', getTriggers);
 router.patch('/:id', update);
 router.delete('/:id', _delete);
 
@@ -17,15 +16,9 @@ function create(req, res, next) {
   .catch(err => next(err));
 }
 
-function getAll(req, res, next) {
-  eventService.getAll()
-  .then(events => res.json(events))
-  .catch(err => next(err));
-}
-
-function getById(req, res, next) {
+function getTriggers(req, res, next) {
   eventService.getById(req.params.id)
-  .then(list => list ? res.json(list) : res.sendStatus(404))
+  .then(event => res.json(event))
   .catch(err => next(err));
 }
 

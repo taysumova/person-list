@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EventSchema = new Schema({
+  campaignId: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   customId: {
     type: String,
-    required: true,
   },
   description: {
     type: String,

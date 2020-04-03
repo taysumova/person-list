@@ -7,15 +7,23 @@ module.exports = {
 
 async function detect(params, additionalParams) {
   const { event, visitor } = params;
-  const eventId = await EventModel.findOne({ customId: event });
+  const localEvent = await EventModel.findOne({ customId: event });
 
-  if (!eventId) throw 'Event is not found';
+  if (!localEvent) throw 'Event is not found';
 
-  const isDetected = await TriggerModel.findOne({ event: eventId, visitor });
+  const isDetected = await TriggerModel.findOne({
+    event: localEvent.campaignId,
+    visitor
+  });
+
   if (isDetected) {
     return update(isDetected._id, additionalParams);
   }
-  return create({ event: eventId, visitor }, additionalParams);
+  
+  return create({
+    event: localEvent.campaignId,
+    visitor
+  }, additionalParams);
 }
 
 async function create(params, additionalParams) {

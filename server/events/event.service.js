@@ -18,7 +18,7 @@ async function getById(eventId) {
 
   if (!event) throw 'Event is not found';
 
-  const triggers = await TriggerModel.find({ event: event._id });
+  const triggers = await TriggerModel.find({ event: event.campaignId });
   return {
     data: event,
     triggers 

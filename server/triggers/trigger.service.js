@@ -7,7 +7,10 @@ module.exports = {
 
 async function detect(params, additionalParams) {
   const { event, visitor } = params;
-  const eventId = await EventModel.findOne({ campaignId: event });
+  const eventId = await EventModel.findOne({ customId: event });
+
+  if (!eventId) throw 'Event is not found';
+
   const isDetected = await TriggerModel.findOne({ event: eventId, visitor });
   if (isDetected) {
     return update(isDetected._id, additionalParams);

@@ -2,18 +2,23 @@ const EventModel = require('./event.model');
 const TriggerModel = require('../triggers/trigger.model');
 
 module.exports = {
+  getAll,
   getById,
   create,
   update,
   delete: _delete
 };
 
+async function getAll() {
+  return await EventModel.find();
+}
+
 async function getById(eventId) {
   const event = await EventModel.findOne({ campaignId: eventId });
 
   if (!event) throw 'Event is not found';
 
-  const triggers = await TriggerModel.find({ event: eventId });
+  const triggers = await TriggerModel.find({ event: event._id });
   return {
     data: event,
     triggers 
